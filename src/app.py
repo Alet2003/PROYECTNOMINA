@@ -4,15 +4,9 @@ from flask import Flask,  redirect, request, jsonify, json, session, render_temp
 from config.db import db, app, ma
 from common.Toke import *
 
-<<<<<<< HEAD
+# from api.roles import routes_roles
 
-
-from api.roles import routes_roles 
-=======
-from api.roles import routes_roles
->>>>>>> 180ff1850f887bcab3fc135b65ce76a2bfa7a75f
-
-app.register_blueprint(routes_roles, url_prefix="/api")
+# app.register_blueprint(routes_roles, url_prefix="/api")
 
 
 #------------------------------------------------
@@ -20,9 +14,9 @@ app.register_blueprint(routes_roles, url_prefix="/api")
 def index():
     return render_template('/index.html')
 
-@app.route("/algo")
-def otr():
-    return render_template('/main/homeodontologo.html',)
+# @app.route("/algo")
+# def otr():
+#     return render_template('/main/homeodontologo.html',)
 
 # @app.route('/indexagendarcitas', methods=['GET'] )
 # def indexhome():
