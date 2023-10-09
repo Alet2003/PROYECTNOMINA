@@ -3,6 +3,8 @@
 from flask import Flask,  redirect, request, jsonify, json, session, render_template
 from config.db import db, app, ma
 from common.Toke import *
+from Model import *
+
 
 # from api.roles import routes_roles
 
