@@ -6,7 +6,7 @@ from common.Toke import *
 
 
 
-from api.roles import routes_roles
+from api.roles import routes_roles 
 
 app.register_blueprint(routes_roles, url_prefix="/api")
 
