@@ -18,43 +18,47 @@ routes_Descuentos = Blueprint("routes_Descuentos", __name__)
 Descuento_Schema = DescuentosSchema()
 Descuentos_Schema = DescuentosSchema(many=True)
 
-@routes_Descuentos.route("/Deducciones", methods=["GET"])
-def Deducciones():
-    returnall = Deducciones.query.all()
-    resultado_Deducciones = Descuentos_Schema.dump(returnall)
-    return jsonify(resultado_Deducciones)
+@routes_Descuentos.route("/Descuentos", methods=["GET"])
+def Descuentos():
+    returnall = Descuentos.query.all()
+    resultado_Descuentos = Descuentos_Schema.dump(returnall)
+    return jsonify(resultado_Descuentos)
 
 
 # crud de usuarios
-@routes_Descuentos.route("/eliminar_Deducciones/<IDDeduccion>", methods=["GET"])
-def eliminar_Deducciones(IDDeduccion):
-    IDDeduccion = Deducciones.query.get(IDDeduccion)
+@routes_Descuentos.route("/eliminar_Descuentos/<IDDeduccion>", methods=["GET"])
+def eliminar_Descuentos(IDDeduccion):
+    IDDeduccion = Descuentos.query.get(IDDeduccion)
     db.session.delete(IDDeduccion)
     db.session.commit()
     return jsonify(DescuentosSchema.dump(IDDeduccion))
 
 
-@routes_Descuentos.route("/actualizarDeducciones", methods=["POST"])
-def actualizarDeducciones():
-    IDDeduccion = request.json["IDDeduccion"]
-    TipoDeduccion = request.json["TipoDeduccion"]
-    MontoDeduccion = request.json["MontoDeduccion"]
+@routes_Descuentos.route("/actualizarDescuentos", methods=["POST"])
+def actualizarDescuentos():
+    IDDescuento = request.json["IDDescuento"]
+    FechaAplicacionDescuento = request.json["IDDescuento"]
+    TipoDescuento = request.json["TipoDescuento"]
+    MontoDescuento = request.json["MontoDescuento"]
+    DescripcionDescuento = request.json["DescripcionDescuento"]
     IDEmpleado = request.json["IDEmpleado"]
-    Deducciones = Deducciones.query.get(IDDeduccion)
-    Deducciones.TipoDeduccion = TipoDeduccion
-    Deducciones.MontoDeduccion = MontoDeduccion
-    Deducciones.IDEmpleado = IDEmpleado
+    Descuentos = Descuentos.query.get(IDDescuento)
+    Descuentos.FechaAplicacionDescuento = FechaAplicacionDescuento
+    Descuentos.TipoDescuento = TipoDescuento
+    Descuentos.MontoDescuento = MontoDescuento
+    Descuentos.DescripcionDescuento = DescripcionDescuento
+    Descuentos.IDEmpleado = IDEmpleado
     db.session.commit()
-    return redirect("/Deducciones")
+    return redirect("/Descuentos")
 
 
-@routes_Descuentos.route("/save_Deducciones", methods=["POST"])
-def save_Deducciones():
-    Deducciones = request.json[
-        "IDDeduccion, TipoDeduccion, MontoDeduccion, IDEmpleado"
+@routes_Descuentos.route("/save_Descuentos", methods=["POST"])
+def save_Descuentos():
+    Descuentos = request.json[
+        "IDDescuento, FechaAplicacionDescuento, TipoDescuento, MontoDescuento, DescripcionDescuento, IDEmpleado"
     ]
-    print(Deducciones)
-    new_Deducciones = Deducciones(Deducciones)
-    db.session.add(new_Deducciones)
+    print(Descuentos)
+    new_Descuentos = Descuentos(Descuentos)
+    db.session.add(new_Descuentos)
     db.session.commit()
-    return redirect("/Deducciones")
+    return redirect("/Descuentos")
