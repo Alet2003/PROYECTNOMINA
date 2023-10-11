@@ -36,28 +36,26 @@ def eliminar_HistorialPagos(IDRegistro):
 @routes_historialpagos.route("/actualizarHistorialPagos", methods=["POST"])
 def actualizarHistorialPagos():
     IDRegistro = request.json["IDRegistro"]
-    FechaAplicacionDescuento = request.json["IDDescuento"]
-    TipoDescuento = request.json["TipoDescuento"]
-    MontoDescuento = request.json["MontoDescuento"]
-    DescripcionDescuento = request.json["DescripcionDescuento"]
+    FechaPago = request.json["FechaPago"]
+    TipoPago = request.json["TipoPago"]
+    MontoPago = request.json["MontoPago"]
     IDEmpleado = request.json["IDEmpleado"]
     HistorialPagos = HistorialPagos.query.get(IDRegistro)
-    HistorialPagos.FechaAplicacionDescuento = FechaAplicacionDescuento
-    HistorialPagos.TipoDescuento = TipoDescuento
-    HistorialPagos.MontoDescuento = MontoDescuento
-    HistorialPagos.DescripcionDescuento = DescripcionDescuento
+    HistorialPagos.FechaPago = FechaPago
+    HistorialPagos.TipoPago = TipoPago
+    HistorialPagos.MontoPago = MontoPago
     HistorialPagos.IDEmpleado = IDEmpleado
     db.session.commit()
     return redirect("/HistorialPagos")
 
 
-@routes_historialpagos.route("/save_Descuentos", methods=["POST"])
+@routes_historialpagos.route("/save_HistorialPagos", methods=["POST"])
 def save_Descuentos():
     HistorialPagos = request.json[
-        "IDDescuento, FechaAplicacionDescuento, TipoDescuento, MontoDescuento, DescripcionDescuento, IDEmpleado"
+        "IDRegistro, FechaPago, TipoPago, MontoPago, IDEmpleado"
     ]
     print(HistorialPagos)
-    new_Descuentos = HistorialPagos(HistorialPagos)
-    db.session.add(new_Descuentos)
+    new_HistorialPagos = HistorialPagos(HistorialPagos)
+    db.session.add(new_HistorialPagos)
     db.session.commit()
-    return redirect("/Descuentos")
+    return redirect("/HistorialPagos")
