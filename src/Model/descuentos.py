@@ -1,3 +1,4 @@
+
 from config.db import db, app, ma
 
 class Descuentos(db.Model):
