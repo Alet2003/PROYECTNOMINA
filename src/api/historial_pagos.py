@@ -25,24 +25,23 @@ def HistorialPagos():
     return jsonify(resultado_HistorialPagos)
 
 
-# crud de usuarios
-@routes_historialpagos.route("/eliminar_HistorialPagos/<IDDeduccion>", methods=["GET"])
-def eliminar_HistorialPagos(IDDeduccion):
-    IDDeduccion = HistorialPagos.query.get(IDDeduccion)
-    db.session.delete(IDDeduccion)
+@routes_historialpagos.route("/eliminar_HistorialPagos/<IDRegistro>", methods=["GET"])
+def eliminar_HistorialPagos(IDRegistro):
+    IDRegistro = HistorialPagos.query.get(IDRegistro)
+    db.session.delete(IDRegistro)
     db.session.commit()
-    return jsonify(HistorialPagosSchema.dump(IDDeduccion))
+    return jsonify(HistorialPagosSchema.dump(IDRegistro))
 
 
-@routes_historialpagos.route("/actualizarDescuentos", methods=["POST"])
-def actualizarDescuentos():
-    IDDescuento = request.json["IDDescuento"]
+@routes_historialpagos.route("/actualizarHistorialPagos", methods=["POST"])
+def actualizarHistorialPagos():
+    IDRegistro = request.json["IDRegistro"]
     FechaAplicacionDescuento = request.json["IDDescuento"]
     TipoDescuento = request.json["TipoDescuento"]
     MontoDescuento = request.json["MontoDescuento"]
     DescripcionDescuento = request.json["DescripcionDescuento"]
     IDEmpleado = request.json["IDEmpleado"]
-    HistorialPagos = HistorialPagos.query.get(IDDescuento)
+    HistorialPagos = HistorialPagos.query.get(IDRegistro)
     HistorialPagos.FechaAplicacionDescuento = FechaAplicacionDescuento
     HistorialPagos.TipoDescuento = TipoDescuento
     HistorialPagos.MontoDescuento = MontoDescuento
