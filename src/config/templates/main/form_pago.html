@@ -1,68 +1,113 @@
-{% extends '/index.html' %}
-{% block body %}
-<!-- Latest compiled and minified JavaScript -->
-<div class="form-body">
-    <div class="row">
-        <div class="form-holder">
-            <div class="form-content">
-                <div class="form-items">
-                    <h3>Bienvenido al formulario de tratamientos</h3>
-                    <p>Si desea agregar un nuevo item llene el formulario.</p>
-                    <form class="requires-validation" novalidate>
-                        <div class="col-md-12">
-                            <input id="nombre"
-                                class="form-control"
-                                type="text"
-                                name="nombre"
-                                placeholder="Nombre del tratamiento"
-                                required
-                            >
-                            <div class="valid-feedback">Nombre es valido!</div>
-                            <div class="invalid-feedback">Campo nombre no es valido!</div>
-                        </div>
-                        <div class="col-md-12">
-                            <input id="descripcion"
-                                class="form-control"
-                                type="text"
-                                name="descripcion"
-                                placeholder="Descripción"
-                                required
-                            >
-                            <div class="valid-feedback">Descripción es valido!</div>
-                            <div class="invalid-feedback">descripcion no puede estar en blanco!</div>
-                        </div>
-                        <div class="col-md-12">
-                            <input id="duracion"
-                                class="form-control"
-                                type="text"
-                                name="duracion"
-                                placeholder="Duracion"
-                                required
-                            >
-                            <div class="valid-feedback">Duracion es valida!</div>
-                            <div class="invalid-feedback">El campo duracion no puede estar vacio!</div>
-                        </div>
-                        <div class="col-md-12">
-                            <input id="costo"
-                                class="form-control"
-                                type="text"
-                                name="costo"
-                                placeholder="Costo"
-                                required
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>PAGO NOMINA</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="./../static/assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="./../static/css/styles.css" rel="stylesheet" />
 
-                            >
-                            <div class="valid-feedback">Costo es valida!</div>
-                            <div class="invalid-feedback">El campo costo no puede estar vacio!</div>
+    <style>
+        /* Estilos para centrar el formulario en la pantalla */
+        .form-container {
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Agrega espaciado vertical uniforme a todos los elementos */
+        .form-control {
+            margin-bottom: 10px; /* Puedes ajustar este valor según tus preferencias */
+        }
+
+        /* Estilo adicional para el botón de envío */
+        .form-button {
+            margin-top: 15px; /* Puedes ajustar este valor según tus preferencias */
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div class="form-container">
+        {% extends '/index.html' %}
+        {% block body %}
+        <!-- Latest compiled and minified JavaScript -->
+        <div class="form-body">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>Bienvenido al formulario de tratamientos</h3>
+                            <p>llene los siguientes datos obligatorios.</p>
+                            <form class="requires-validation" novalidate>
+                                <div class="col-md-12">
+                                    <input id="nombre"
+                                        class="form-control"
+                                        type="text"
+                                        name="nombre"
+                                        placeholder="Nombre del empleado"
+                                        required
+                                    >
+                                    <div class="valid-feedback">Nombre es valido!</div>
+                                    <div class="invalid-feedback">Campo nombre no es valido!</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="descripcion"
+                                        class="form-control"
+                                        type="text"
+                                        name="cargo"
+                                        placeholder="Cargo del empleado"
+                                        required
+                                    >
+                                    <div class="valid-feedback">Cargo del empleado es valido!</div>
+                                    <div class="invalid-feedback">Cargo no puede estar en blanco!</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="documento"
+                                        class="form-control"
+                                        type="number"
+                                        name="documento"
+                                        placeholder="Documento del empleado"
+                                        required
+                                    >
+                                    <div class="valid-feedback">El Documento es valido!</div>
+                                    <div class="invalid-feedback">El campo duracion no puede estar vacio!</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input id="salario"
+                                        class="form-control"
+                                        type="text"
+                                        name="salario"
+                                        placeholder="Salario a Pagar"
+                                        required
+                                    >
+                                    <div class="valid-feedback">El Salario es valida!</div>
+                                    <div class="invalid-feedback">El campo salario no puede estar vacio!</div>
+                                </div>
+                                <div class="form-button mt-3">
+                                    <button zid="submit" type="submit" class="btn btn-primary form-button">PAGAR</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-button mt-3">
-                            <button zid="submit" type="submit" class="btn btn-primary">Agendar</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+        {% endblock %}
     </div>
-</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-{% endblock %}
+</body>
+</html>
