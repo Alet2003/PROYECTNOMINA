@@ -5,10 +5,12 @@ from config.db import db, app, ma
 from common.Toke import *
 from Model import *
 
+from rutas.home import routes_home
 
 # from api.roles import routes_roles
 
 # app.register_blueprint(routes_roles, url_prefix="/api")
+app.register_blueprint(routes_home, url_prefix="/api")
 
 
 #------------------------------------------------
@@ -25,6 +27,6 @@ def index():
 #     return render_template('/main/agendarcitas.html')
 
 if __name__ == '__main__':
-   # load_dotenv()
+    
     app.run(debug=True, port=5000, host='0.0.0.0')
     
