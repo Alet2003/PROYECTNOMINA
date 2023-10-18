@@ -10,12 +10,15 @@ class HorasExtras(db.Model):
     TotalHorasExtras = db.Column(db.Numeric(5, 2))
     IDEmpleado = db.Column(db.Integer, db.ForeignKey('empleados.IDEmpleado'))
 
-    def __init__(selfo, FechaRegistro, HoraInicioHorasExtras, HoraFinHorasExtras, TotalHorasExtras, IDEmplead):
+    def __init__(self, FechaRegistro, HoraInicioHorasExtras, HoraFinHorasExtras, TotalHorasExtras, IDEmpleado):
         self.FechaRegistro = FechaRegistro
         self.HoraInicioHorasExtras = HoraInicioHorasExtras
         self.HoraFinHorasExtras = HoraFinHorasExtras
         self.TotalHorasExtras = TotalHorasExtras
         self.IDEmpleado = IDEmpleado
+
+with app.app_context():
+    db.create_all()
 
 class HorasExtrasSchema(ma.Schema):
     class Meta:

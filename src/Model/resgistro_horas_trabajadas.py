@@ -17,6 +17,9 @@ class RegistroHorasTrabajadas(db.Model):
         self.TotalHorasTrabajadas = TotalHorasTrabajadas
         self.IDEmpleado = IDEmpleado
 
+with app.app_context():
+    db.create_all()
+
 class RegistroHorasTrabajadasSchema(ma.Schema):
     class Meta:
         fields = ('IDRegistro', 'FechaRegistro', 'HoraEntrada', 'HoraSalida', 'TotalHorasTrabajadas', 'IDEmpleado')

@@ -1,18 +1,11 @@
-from datetime import datetime
+from flask import Flask, Blueprint,redirect,request,jsonify,json,session,render_template
 from common.Toke import *
 from config.db import db, app, ma
-from flask import (
-    Flask,
-    Blueprint,
-    redirect,
-    request,
-    jsonify,
-    json,
-    session,
-    render_template,
-)
 from sqlalchemy import func, extract
+from datetime import datetime
+
 from Model.creditos import Creditos, CreditosSchema
+
 now = datetime.now()
 routes_Creditos = Blueprint("routes_Creditos", __name__)
 

@@ -15,6 +15,9 @@ class Pagos(db.Model):
         self.MontoPago = MontoPago
         self.IDEmpleado = IDEmpleado
 
+with app.app_context():
+    db.create_all()
+
 class PagosSchema(ma.Schema):
     class Meta:
         fields = ('IDPago' ,'FechaPago', 'TipoPago', 'MontoPago', 'IDEmpleado')

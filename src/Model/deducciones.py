@@ -13,6 +13,9 @@ class Deducciones(db.Model):
         self.MontoDeduccion = MontoDeduccion
         self.IDEmpleado = IDEmpleado
 
+with app.app_context():
+    db.create_all()
+
 class DeduccionesSchema(ma.Schema):
     class Meta:
         fields = ('IDDeduccion', 'TipoDeduccion', 'MontoDeduccion', 'IDEmpleado')

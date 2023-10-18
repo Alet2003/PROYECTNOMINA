@@ -21,6 +21,9 @@ class Creditos(db.Model):
         self.EstadoCredito = EstadoCredito
         self.IDEmpleado = IDEmpleado
 
+with app.app_context():
+    db.create_all()
+
 class CreditosSchema(ma.Schema):
     class Meta:
         fields = ('IDCredito', 'FechaOtorgamiento', 'MontoCredito', 'TasaInteres', 'PlazoCredito', 'CuotasMensuales', 'EstadoCredito', 'IDEmpleado')

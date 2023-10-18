@@ -18,6 +18,9 @@ class Descuentos(db.Model):
         self.DescripcionDescuento = DescripcionDescuento
         self.IDEmpleado = IDEmpleado
 
+with app.app_context():
+    db.create_all()
+
 class DescuentosSchema(ma.Schema):
     class Meta:
         fields = ('IDDescuento', 'FechaAplicacionDescuento', 'TipoDescuento', 'MontoDescuento', 'DescripcionDescuento', 'IDEmpleado')

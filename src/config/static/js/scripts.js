@@ -9,6 +9,8 @@
 
 window.addEventListener('DOMContentLoaded', event => {
 
+
+
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#mainNav');
@@ -52,3 +54,17 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+window.onload = navbarcolor()
+function navbarcolor(){
+    const pagina = document.getElementById("pago");
+    console.log(pagina);
+
+    if (pagina.hasAttribute) {
+        
+    } else {
+        
+    }
+    
+
+}

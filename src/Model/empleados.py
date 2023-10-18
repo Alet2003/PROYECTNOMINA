@@ -25,6 +25,9 @@ class Empleados(db.Model):
         self.FechaContratacion = FechaContratacion
         self.SalarioBase = SalarioBase
 
+with app.app_context():
+    db.create_all()
+
 class EmpleadosSchema(ma.Schema):
     class Meta:
         fields = ('IDEmpleado', 'Nombre', 'Apellido', 'FechaNacimiento', 'Direccion', 'NumeroTelefono', 'CorreoElectronico', 'Departamento', 'FechaContratacion', 'SalarioBase')

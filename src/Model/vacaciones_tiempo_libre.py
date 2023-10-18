@@ -19,6 +19,9 @@ class VacacionesTiempoLibre(db.Model):
         self.EstadoSolicitud = EstadoSolicitud
         self.IDEmpleado = IDEmpleado
 
+with app.app_context():
+    db.create_all()
+
 class VacacionesTiempoLibreSchema(ma.Schema):
     class Meta:
         fields = ('IDSolicitud', 'TipoSolicitud', 'FechaSolicitud', 'FechaInicio', 'FechaTermino', 'EstadoSolicitud', 'IDEmpleado')
