@@ -55,16 +55,13 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-window.onload = navbarcolor()
-function navbarcolor(){
-    const pagina = document.getElementById("pago");
-    console.log(pagina);
-
-    if (pagina.hasAttribute) {
-        
-    } else {
-        
-    }
+// window.onload = navbarcolor()
+// function navbarcolor(){
+//     const pagina = document.getElementById("pago");
+    
+//     if (pagina){
+//         console.log(pagina);
+//     }
     
 
-}
+// }

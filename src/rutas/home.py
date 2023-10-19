@@ -7,5 +7,9 @@ routes_home = Blueprint("routes_home", __name__)
 
 
 @routes_home.route('/indexpagar', methods=['GET'] )
-def indexmisodon():
+def indexpagar():
     return render_template('/main/form_pago.html')
+
+@routes_home.route('/indexhistorialpagos', methods=['GET'] )
+def indexhistorialpagos():
+    return render_template('/main/historial_pagos.html')

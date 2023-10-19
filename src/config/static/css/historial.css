@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+  
+.dataTables_wrapper .dataTables_filter input {
+  color: black !important;
+  margin: 5px;
+  border-bottom: 1px #ffc800 !important;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  margin: 5px;
+}
+
+.sorting{
+  background-color: #ffc800 !important;
+}
+  th {
+    background-color: #b9e7f0bd;
+    border-top: solid 2px #b9e7f0bd;
+    border-bottom: solid 2px #b9e7f0bd;
+  }
+
+  .dataTables_wrapper .dataTables_length select {
+    color: black !important;
+  }
+
+  /* tr:nth-child(odd) {
+    background-color: gray;
+  } */
+  th, td {
+    padding: 0.5rem;
+  }
+  /* td:hover {
+    background-color: lightblue;
+  } */
+  
+  .paginate_button {
+    border-radius: 0 !important;
+  }
+
+  /* table{
+    font-family:  'Poppins', sans-serif;
+    color: black;
+    border-radius: 10px;
+    border: solid 5px black;
+  background-color: brown;
+  } */
+
+  .tabla{
+    position: relative;
+    font-size: 20px !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+    margin: 20px;
+    border: 10px solid #ffc800;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    width: 80%;
+    height: 80%;
+  }
+
+
+  body.dark th {
+    background-color: black;
+    color: white;
+   border: none;
+  }
+  body.dark tr:nth-child(odd) {
+    background-color: gray;
+  }
+  body.dark th, td {
+    padding: 0.5rem;
+  }
+  body.dark td:hover {
+    background-color: lightgray;
+  }
+  
+  body.dark .paginate_button {
+    border-radius: 0 !important;
+    color: white;
+  }
+
+  body.dark table{
+    font-family:  'Poppins', sans-serif;
+    color: black;
+    border-radius: 10px;
+    border: solid 4px white;
+  }
+
+  body.dark .tabla{
+    margin-left: 50px;
+    width: 500px;
+    height: 200px;
+  }
+
+  body.dark .tbody{
+    border-radius: 20px;
+    border: solid 1px black;
+  }
+
+  label{
+    color: white;
+  }
+  
+  .dataTables_info{
+    color: white;
+  }

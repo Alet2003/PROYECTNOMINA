@@ -19,9 +19,10 @@ HistorialPago_Schema = HistorialPagosSchema()
 HistorialPagosSchema = HistorialPagosSchema(many=True)
 
 @routes_historialpagos.route("/HistorialPagos", methods=["GET"])
-def HistorialPagos():
+def historialPago():
     returnall = HistorialPagos.query.all()
     resultado_HistorialPagos = HistorialPagosSchema.dump(returnall)
+    print(resultado_HistorialPagos)
     return jsonify(resultado_HistorialPagos)
 
 
