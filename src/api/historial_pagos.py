@@ -10,7 +10,7 @@ from flask import (
     session,
     render_template,
 )
-from sqlalchemy import func, extract
+from sqlalchemy import func, extract, distinct
 from Model.historial_pagos import HistorialPagos, HistorialPagosSchema
 routes_historialpagos = Blueprint("routes_historialpagos", __name__)
 
@@ -22,16 +22,15 @@ HistorialPagosSchema = HistorialPagosSchema(many=True)
 def historialPago():
     returnall = HistorialPagos.query.all()
     resultado_HistorialPagos = HistorialPagosSchema.dump(returnall)
-    print(resultado_HistorialPagos)
     return jsonify(resultado_HistorialPagos)
 
 
 @routes_historialpagos.route("/eliminar_HistorialPagos/<IDRegistro>", methods=["GET"])
 def eliminar_HistorialPagos(IDRegistro):
-    IDRegistro = HistorialPagos.query.get(IDRegistro)
-    db.session.delete(IDRegistro)
+    IDRegistros = HistorialPagos.query.get(IDRegistro)
+    db.session.delete(IDRegistros)
     db.session.commit()
-    return jsonify(HistorialPagosSchema.dump(IDRegistro))
+    return jsonify(HistorialPago_Schema.dump(IDRegistros))
 
 
 @routes_historialpagos.route("/actualizarHistorialPagos", methods=["POST"])

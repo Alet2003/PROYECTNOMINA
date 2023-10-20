@@ -13,3 +13,8 @@ def indexpagar():
 @routes_home.route('/indexhistorialpagos', methods=['GET'] )
 def indexhistorialpagos():
     return render_template('/main/historial_pagos.html')
+
+@routes_home.route('/indexcreditolibreinversion', methods=['GET'] )
+def indexcreditolibreinversion():
+    return render_template('/main/credito_libre_inversion.html')
+
