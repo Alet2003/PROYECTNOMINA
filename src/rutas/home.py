@@ -18,3 +18,6 @@ def indexhistorialpagos():
 def indexcreditolibreinversion():
     return render_template('/main/credito_libre_inversion.html')
 
+@routes_home.route('/indexcreditolibreinversion2', methods=['GET'] )
+def indexcreditolibreinversion2():
+    return render_template('/main/creditolibreinversion2.html')
