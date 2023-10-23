@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -29,12 +30,14 @@
 
         /* Agrega espaciado vertical uniforme a todos los elementos */
         .form-control {
-            margin-bottom: 10px; /* Puedes ajustar este valor según tus preferencias */
+            margin-bottom: 10px;
+            /* Puedes ajustar este valor según tus preferencias */
         }
 
         /* Estilo adicional para el botón de envío */
         .form-button {
-            margin-top: 15px; /* Puedes ajustar este valor según tus preferencias */
+            margin-top: 15px;
+            /* Puedes ajustar este valor según tus preferencias */
         }
     </style>
 </head>
@@ -49,87 +52,75 @@
                 <div class="form-holder">
                     <div class="form-content">
                         <div class="form-items">
-                            <h3>Bienvenido al formulario de tratamientos</h3>
-                            <p>llene los siguientes datos obligatorios.</p>
-                            <form class="requires-validation" novalidate>
+                            <h3>Gestión de Nómina</h3>
+                            <p>llene los siguientes datos para el pago nomina.</p>
+                            <form id="nomina-form" class="requires-validation" novalidate>
                                 <div class="col-md-12">
-                                    <input id="nombre"
-                                        class="form-control"
-                                        type="text"
-                                        name="nombre"
-                                        placeholder="Nombre del empleado"
-                                        required
-                                    >
+                                    <input id="nombre" class="form-control" type="text" name="nombre"
+                                        placeholder="Nombre del empleado" required>
                                     <div class="valid-feedback">Nombre es valido!</div>
                                     <div class="invalid-feedback">Campo nombre no es valido!</div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input id="descripcion"
-                                        class="form-control"
-                                        type="text"
-                                        name="cargo"
-                                        placeholder="Cargo del empleado"
-                                        required
-                                    >
-                                    <div class="valid-feedback">Cargo del empleado es valido!</div>
-                                    <div class="invalid-feedback">Cargo no puede estar en blanco!</div>
-                                </div>
-                                <div class="col-md-12">
-                                    <input id="documento"
-                                        class="form-control"
-                                        type="text"
-                                        name="documento"
-                                        placeholder="Documento del empleado"
-                                        required
-                                    >
+                                    <input id="documento" class="form-control" type="text" name="documento"
+                                        placeholder="Documento del empleado" required>
                                     <div class="valid-feedback">El Documento es valido!</div>
-                                    <div class="invalid-feedback">El campo duracion no puede estar vacio!</div>
+                                    <div class="invalid-feedback">El campo documento no puede estar vacio!</div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input id="salario"
-                                        class="form-control"
-                                        type="text"
-                                        name="salario"
-                                        placeholder="Salario a Pagar"
-                                        required
-                                    >
-                                    <div class="valid-feedback">El Salario es valida!</div>
-                                    <div class="invalid-feedback">El campo salario no puede estar vacio!</div>
+                                    <input id="salario-mensual" class="form-control" type="text" name="salario mensual"
+                                        placeholder="Salario Mensual" required>
+                                    <div class="valid-feedback">Salario mensual del empleado es valido!</div>
+                                    <div class="invalid-feedback">este campo no puede estar en blanco!</div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input id="numero de cuenta bancaria"
-                                        class="form-control"
-                                        type="text"
-                                        name="cuenta bancaria"
-                                        placeholder="numero de cuenta bancaria"
-                                        required
-                                    >
-                                    <div class="valid-feedback">El numero de cuenta es valido!</div>
-                                    <div class="invalid-feedback">El campo numero de cuenta no puede estar vacio!</div>
+                                    <input id="dias-trabajados" class="form-control" type="text" name="dias-trabajados"
+                                        placeholder="Dias Trabajados" required>
+                                    <div class="valid-feedback"> Este Campo es valido!</div>
+                                    <div class="invalid-feedback">Este campo no puede estar vacio!</div>
                                 </div>
                                 <div class="col-md-12">
-                                    <input id="correo"
-                                        class="form-control"
-                                        type="text"
-                                        name="correo electronico"
-                                        placeholder="correo electronico"
-                                        required
-                                    >
-                                    <div class="valid-feedback">El correo es valido!</div>
-                                    <div class="invalid-feedback">El campo correo no puede estar vacio!</div>
+                                    <input id="horas-extras" class="form-control" type="number" name="horas extras"
+                                        placeholder="horas extras" required>
+                                    <div class="valid-feedback">El numero de horas extras es valido!</div>
+                                    <div class="invalid-feedback">Este campo no puede estar vacio!</div>
                                 </div>
+                                <div class="col-md-12">
+                                    <input id="ventas-mes" class="form-control" type="text" name="ventas al mes"
+                                        placeholder="Ventas al mes" required>
+                                    <div class="valid-feedback">El campo es valido!</div>
+                                    <div class="invalid-feedback">El campo no puede estar vacio!</div>
+                                </div>
+                                <select class="col-md-12" id="libranza">
+                                    <option value="ninguna">LIBRANZA</option>
+                                    <option value="educativo">Ninguna</option>
+                                    <option value="vivienda">Educativo</option>
+                                    <option value="vehicular">Vivienda</option>
+                                    <option value="almacen">Vehicular</option>
+                                    <option value="almacen">Almacén</option>
+                                </select>
+
                                 <div class="form-button mt-3">
-                                    <button zid="submit" type="submit" class="btn btn-primary form-button">PAGAR</button>
+                                    <button zid="submit" type="submit"
+                                        class="btn btn-primary form-button">PAGAR</button>
                                 </div>
+                                <div type="double" id="resultado" class="resultado"></div>
+                               
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="{{url_for('static',filename='js/app.js')}}"></script>
         {% endblock %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    
+    
+    
+
 </body>
+
 </html>
