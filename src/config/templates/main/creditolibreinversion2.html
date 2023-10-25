@@ -32,7 +32,7 @@
                             estar vacio!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="descripcion"
+                        <input id="monto"
                             class="form-control"
                             type="number"
                             name="Monto"
@@ -44,7 +44,7 @@
                             blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="descripcion"
+                        <input id="plazo"
                             class="form-control"
                             type="number"
                             name="plazo"
@@ -53,6 +53,18 @@
                         <div class="valid-feedback">el plazo es
                             valido!</div>
                         <div class="invalid-feedback">el plazo no puede estar en
+                            blanco!</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="cuotas"
+                            class="form-control"
+                            type="number"
+                            name="cuotas"
+                            placeholder=" numero de cuotas en meses"
+                            required>
+                        <div class="valid-feedback">el cuotas es
+                            valido!</div>
+                        <div class="invalid-feedback">el cuotas no puede estar en
                             blanco!</div>
                     </div>
                     <select style="color:rgb(121, 121, 121)"
@@ -86,8 +98,8 @@
                             estar vacio!</div>
                     </div>
                     <div class="form-button mt-3">
-                        <button zid="submit" type="submit"
-                            class="btn btn-primary form-button">PAGAR</button>
+                        <a onclick="credito()" zid="submit" type="submit"
+                            class="btn btn-primary form-button">PAGAR</a>
                     </div>
                 </form>
             </div>

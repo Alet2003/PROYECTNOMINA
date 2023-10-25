@@ -10,29 +10,29 @@
                         <p>para comenzar verifiquemos si el empleado es apto para el credito</p>
                         <form class="requires-validation" novalidate>
                             <div class="col-md-12">
-                                <input id="nombre"
+                                <input id="edad"
                                     class="form-control"
-                                    type="text"
-                                    name="nombre"
-                                    placeholder="Nombre del empleado"
+                                    type="number"
+                                    name="edad"
+                                    placeholder="edad del empleado"
                                     required
                                 >
-                                <div class="valid-feedback">Nombre es valido!</div>
-                                <div class="invalid-feedback">Campo nombre no es valido!</div>
+                                <div class="valid-feedback">edad es valido!</div>
+                                <div class="invalid-feedback">Campo edad no es valido!</div>
                             </div>
                             <div class="col-md-12">
-                                <input id="documento"
+                                <input id="Salario_mensual"
                                     class="form-control"
-                                    type="text"
-                                    name="documento"
-                                    placeholder="Documento del empleado"
+                                    type="number"
+                                    name="Salario mensual"
+                                    placeholder="Salario mensual del empleado"
                                     required
                                 >
-                                <div class="valid-feedback">El Documento es valido!</div>
-                                <div class="invalid-feedback">El campo duracion no puede estar vacio!</div>
+                                <div class="valid-feedback">El Salario mensual es valido!</div>
+                                <div class="invalid-feedback">El campo no puede estar vacio!</div>
                             </div>
                             <div class="form-button mt-3"> 
-                                <a href="/fronted/indexcreditolibreinversion2" zid="submit" type="submit" class="btn btn-primary form-button">PAGAR</a>
+                                <a onclick="validarcredito()" id="verificar" zid="submit" type="submit" class="btn btn-primary form-button">PAGAR</a>
                             </div>
                         </form>
                     </div>

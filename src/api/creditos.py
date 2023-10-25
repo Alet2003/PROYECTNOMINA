@@ -53,6 +53,7 @@ def actualizarcreditos():
 
 @routes_Creditos.route("/save_creditos", methods=["POST"])
 def save_creditos():
+    print("llego")
     Creditos = request.json[
         "IDCredito, FechaOtorgamiento, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito,IDEmpleado"
     ]
@@ -60,4 +61,4 @@ def save_creditos():
     new_credito = Creditos(Creditos)
     db.session.add(new_credito)
     db.session.commit()
-    return redirect("/Creditos")
+    return "aprobado"
