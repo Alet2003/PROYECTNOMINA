@@ -7,32 +7,32 @@
                 <div class="form-content">
                     <div class="form-items">
                         <h3>Bienvenido</h3>
-                        <p>Para comenzar, ingrese la información del estudiante y realice el pago educativo:</p>
+                        <p>Para comenzar verifiquemos si el empleado es apto para el credito educativo</p>
                         <form class="requires-validation" novalidate>
                             <div class="col-md-12">
-                                <input id="nombre_estudiante"
-                                    class="form-control"
-                                    type="text"
-                                    name="nombre_estudiante"
-                                    placeholder="Nombre del estudiante"
-                                    required
-                                >
-                                <div class="valid-feedback">Nombre es válido.</div>
-                                <div class="invalid-feedback">Campo nombre no puede estar vacío.</div>
-                            </div>
-                            <div class="col-md-12">
-                                <input id="monto_pago"
+                                <input id="edad"
                                     class="form-control"
                                     type="number"
-                                    name="monto_pago"
-                                    placeholder="Monto del pago educativo"
+                                    name="edad"
+                                    placeholder="edad del empleado"
                                     required
                                 >
-                                <div class="valid-feedback">El monto del pago es válido.</div>
-                                <div class="invalid-feedback">El campo no puede estar vacío.</div>
+                                <div class="valid-feedback">edad es valido!</div>
+                                <div class="invalid-feedback">Campo edad no es valido!</div>
                             </div>
-                            <div class="form-button mt-3">
-                                <a onclick="realizarPagoEducativo()" id="pagar" zid="submit" type="submit" class="btn btn-primary form-button">REALIZAR PAGO</a>
+                            <div class="col-md-12">
+                                <input id="Salario_mensual"
+                                    class="form-control"
+                                    type="number"
+                                    name="Salario mensual"
+                                    placeholder="Salario mensual del empleado"
+                                    required
+                                >
+                                <div class="valid-feedback">El Salario mensual es valido!</div>
+                                <div class="invalid-feedback">El campo no puede estar vacio!</div>
+                            </div>
+                            <div class="form-button mt-3"> 
+                                <a onclick="validarcreditoeducativo()" id="verificar" zid="submit" type="submit" class="btn btn-primary form-button">PAGAR</a>
                             </div>
                         </form>
                     </div>

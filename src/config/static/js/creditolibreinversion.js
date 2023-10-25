@@ -6,6 +6,13 @@ function validarcredito(){
     }
 }
 
+function validarcreditoeducativo(){
+    var edad = document.getElementById("edad").value ;
+    var salariom = document.getElementById("Salario_mensual").value ;
+    if (edad >= 30 && salariom >= 2000000) {
+        document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditoeducativo2")
+    }
+}
 function credito() {
     var fechaActual = new Date();
     const IDCredito = "";
