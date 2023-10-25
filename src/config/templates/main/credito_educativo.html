@@ -1,0 +1,44 @@
+{% extends '/index.html' %}
+{% block body %}
+    <div style="margin-top: 20dvh; margin-left: 20dvh; margin-right: 20dvh; margin-bottom: 50dvh;" id="pago" value="pago" class="form-body">
+        <div class="row">
+            {% block div %}
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Bienvenido</h3>
+                        <p>Para comenzar, ingrese la información del estudiante y realice el pago educativo:</p>
+                        <form class="requires-validation" novalidate>
+                            <div class="col-md-12">
+                                <input id="nombre_estudiante"
+                                    class="form-control"
+                                    type="text"
+                                    name="nombre_estudiante"
+                                    placeholder="Nombre del estudiante"
+                                    required
+                                >
+                                <div class="valid-feedback">Nombre es válido.</div>
+                                <div class="invalid-feedback">Campo nombre no puede estar vacío.</div>
+                            </div>
+                            <div class="col-md-12">
+                                <input id="monto_pago"
+                                    class="form-control"
+                                    type="number"
+                                    name="monto_pago"
+                                    placeholder="Monto del pago educativo"
+                                    required
+                                >
+                                <div class="valid-feedback">El monto del pago es válido.</div>
+                                <div class="invalid-feedback">El campo no puede estar vacío.</div>
+                            </div>
+                            <div class="form-button mt-3">
+                                <a onclick="realizarPagoEducativo()" id="pagar" zid="submit" type="submit" class="btn btn-primary form-button">REALIZAR PAGO</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
