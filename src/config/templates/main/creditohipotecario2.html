@@ -1,0 +1,109 @@
+{% extends '/main/credito_hipotecario' %}
+{% block body %}
+<div
+    style="margin-top: 20dvh; margin-left: 20dvh; margin-right: 20dvh; margin-bottom: 50dvh;"
+    class="row">
+    <div class="form-holder">
+        <div class="form-content">
+            <div class="form-items">
+                <h2>Solo un paso mas</h2>
+                <p>llene los siguientes datos obligatorios.</p>
+                <form class="requires-validation" novalidate>
+                    <div class="col-md-12">
+                        <input id="nombre"
+                            class="form-control"
+                            type="text"
+                            name="nombre"
+                            placeholder="Nombre del empleado"
+                            required>
+                        <div class="valid-feedback">Nombre es valido!</div>
+                        <div class="invalid-feedback">Campo nombre no es valido!</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="documento"
+                            class="form-control"
+                            type="number"
+                            name="documento"
+                            placeholder="Documento del empleado"
+                            required>
+                        <div class="valid-feedback">El Documento es valido!</div>
+                        <div class="invalid-feedback">El campo Documento no
+                            puede
+                            estar vacio!</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="monto"
+                            class="form-control"
+                            type="number"
+                            name="Monto"
+                            placeholder="Monto"
+                            required>
+                        <div class="valid-feedback">el plazo es
+                            valido!</div>
+                        <div class="invalid-feedback">el plazo no puede estar en
+                            blanco!</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="plazo"
+                            class="form-control"
+                            type="number"
+                            name="plazo"
+                            placeholder="plazo en meses"
+                            required>
+                        <div class="valid-feedback">el plazo es
+                            valido!</div>
+                        <div class="invalid-feedback">el plazo no puede estar en
+                            blanco!</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="cuotas"
+                            class="form-control"
+                            type="number"
+                            name="cuotas"
+                            placeholder=" numero de cuotas en meses"
+                            required>
+                        <div class="valid-feedback">el cuotas es
+                            valido!</div>
+                        <div class="invalid-feedback">el cuotas no puede estar en
+                            blanco!</div>
+                    </div>
+                    <select style="color:rgb(121, 121, 121)"
+                        class="form-select col-md-12"
+                        aria-label="Default select example">
+                        <option selected>Tiene cuenta con banca ADSI?</option>
+                        <option value="1">Si</option>
+                        <option value="2">No</option>
+                    </select>
+                    <div class="col-md-12">
+                        <input id="numero de cuenta bancaria"
+                            class="form-control"
+                            type="text"
+                            name="cuenta bancaria"
+                            placeholder="numero de cuenta bancaria"
+                            required>
+                        <div class="valid-feedback">El numero de cuenta es
+                            valido!</div>
+                        <div class="invalid-feedback">El campo numero de cuenta
+                            no puede estar vacio!</div>
+                    </div>
+                    <div class="col-md-12">
+                        <input id="correo"
+                            class="form-control"
+                            type="text"
+                            name="correo electronico"
+                            placeholder="correo electronico"
+                            required>
+                        <div class="valid-feedback">El correo es valido!</div>
+                        <div class="invalid-feedback">El campo correo no puede
+                            estar vacio!</div>
+                    </div>
+                    <div class="form-button mt-3">
+                        <a onclick="credito()" zid="submit" type="submit"
+                            class="btn btn-primary form-button">PAGAR</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
