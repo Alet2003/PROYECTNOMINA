@@ -21,3 +21,19 @@ def indexcreditolibreinversion():
 @routes_home.route('/indexcreditolibreinversion2', methods=['GET'] )
 def indexcreditolibreinversion2():
     return render_template('/main/creditolibreinversion2.html')
+
+@routes_home.route('/indexcreditohipotecario', methods=['GET'] )
+def indexcreditohipotecario():
+    return render_template('/main/credito_hipotecario.html')
+
+@routes_home.route('/indexcreditohipotecario2', methods=['GET'] )
+def indexcreditohipotecario2():
+    return render_template('/main/creditohipotecario2.html')
+
+@routes_home.route('/indexcreditoeducativo', methods=['GET'] )
+def indexcreditoeducativo():
+    return render_template('/main/credito_educativo.html')
+
+@routes_home.route('/indexcreditoeducativo2', methods=['GET'] )
+def indexcreditoeducativo2():
+    return render_template('/main/credito_educativo2.html')
