@@ -14,7 +14,7 @@ CreditoSchema = CreditosSchema()
 Creditos_Schema = CreditosSchema(many=True)
 
 @routes_Creditos.route("/Creditos", methods=["GET"])
-def Creditos():
+def creditos():
     returnall = Creditos.query.all()
     resultado_creditos = Creditos_Schema.dump(returnall)
     return jsonify(resultado_creditos)
@@ -53,12 +53,16 @@ def actualizarcreditos():
 
 @routes_Creditos.route("/save_creditos", methods=["POST"])
 def save_creditos():
-    print("llego")
-    Creditos = request.json[
-        "IDCredito, FechaOtorgamiento, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito,IDEmpleado"
-    ]
-    print(Creditos)
-    new_credito = Creditos(Creditos)
+    print("Saving")
+    FechaOtorgamiento = now
+    MontoCredito = request.json["MontoCredito"]
+    TasaInteres = request.json["TasaInteres"]
+    PlazoCredito = request.json["PlazoCredito"]
+    CuotasMensuales = request.json["CuotasMensuales"]
+    EstadoCredito = request.json["EstadoCredito"]
+    IDEmpleado = request.json["IDEmpleado"]
+    new_credito = Creditos(FechaOtorgamiento, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado)
+    print(new_credito)
     db.session.add(new_credito)
     db.session.commit()
     return "aprobado"
