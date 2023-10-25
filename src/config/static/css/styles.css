@@ -682,6 +682,9 @@ progress {
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
+  border: 5px solid #ffc800;
+  border-radius: 5px;
+  padding: 20px;
 }
 .row > * {
   flex-shrink: 0;
@@ -1150,6 +1153,7 @@ progress {
     width: 91.66666667%;
   }
   .col-md-12 {
+    margin: 10px;
     flex: 0 0 auto;
     width: 100%;
   }
