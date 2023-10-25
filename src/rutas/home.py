@@ -22,9 +22,13 @@ def indexcreditolibreinversion():
 def indexcreditolibreinversion2():
     return render_template('/main/creditolibreinversion2.html')
 
+@routes_home.route('/indexcreditohipotecario', methods=['GET'] )
+def indexcreditohipotecario():
+    return render_template('/main/credito_hipotecario.html')
 
-
-
+@routes_home.route('/indexcreditohipotecario2', methods=['GET'] )
+def indexcreditohipotecario2():
+    return render_template('/main/creditohipotecario2.html')
 
 @routes_home.route('/indexcreditoeducativo', methods=['GET'] )
 def indexcreditoeducativo():
