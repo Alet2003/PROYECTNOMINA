@@ -1,8 +1,6 @@
 {% extends '/main/credito_educativo.html' %}
 {% block body %}
-<div
-    style="margin-top: 20dvh; margin-left: 20dvh; margin-right: 20dvh; margin-bottom: 50dvh;"
-    class="row">
+<div style="margin-top: 20dvh; margin-left: 20dvh; margin-right: 20dvh; margin-bottom: 50dvh;" class="row">
     <div class="form-holder">
         <div class="form-content">
             <div class="form-items">
@@ -27,50 +25,57 @@
                             placeholder="Documento del empleado"
                             required>
                         <div class="valid-feedback">El Documento es valido!</div>
-                        <div class="invalid-feedback">El campo Documento no
-                            puede
-                            estar vacio!</div>
+                        <div class="invalid-feedback">El campo Documento no puede estar vacio!</div>
                     </div>
-
-                    <select style="color:rgb(121, 121, 121)"
-                        class="form-select col-md-12"
-                        aria-label="Default select example">
-                        <option selected>Que carrera esta estudiando el
-                            beneficiario?</option>
-                        <option value="1">Tecnologico</option>
-                        <option value="2">Profesional</option>
-                    </select>
-                    <select style="color:rgb(121, 121, 121)"
-                        class="form-select col-md-12"
-                        aria-label="Default select example">
-                        <option selected>El credito es por ?</option>
-                        <option value="1">Carrera completa</option>
-                        <option value="2">Por semestre</option>
-                    </select>
-
                     <div class="col-md-12">
-                        <input id="valor del semestre"
+                        <input id="plazo"
                             class="form-control"
                             type="number"
-                            name="valor del semestre"
+                            name="plazo"
+                            placeholder="plazo del credito"
+                            required>
+                        <div class="valid-feedback">El plazo es valido!</div>
+                        <div class="invalid-feedback">El campo plazo no puede estar vacio!</div>
+                    </div>
+                    
+                    <select style="color:rgb(121, 121, 121)"
+                        class="form-select col-md-12"
+                        id="tipo_carrera"
+                        aria-label="Default select example"
+                        required>
+                        <option selected>Que carrera esta estudiando el beneficiario?</option>
+                        <option value="tecnologico">Tecnologico</option>
+                        <option value="profesional">Profesional</option>
+                    </select>
+                    <select style="color:rgb(121, 121, 121)"
+                        class="form-select col-md-12"
+                        id="tipo_credito"
+                        aria-label="Default select example"
+                        required>
+                        <option selected>El crédito es por?</option>
+                        <option value="completa">Carrera completa</option>
+                        <option value="semestre">Por semestre</option>
+                    </select>
+
+                    <div class="col-md-12">
+                        <input id="valor_del_semestre"
+                            class="form-control"
+                            type="number"
+                            name="valor_del_semestre"
                             placeholder="valor del semestre"
                             required>
-                        <div class="valid-feedback">el valor es
-                            valido!</div>
-                        <div class="invalid-feedback">el valor no puede estar en
-                            blanco!</div>
+                        <div class="valid-feedback">El valor es valido!</div>
+                        <div class="invalid-feedback">El valor no puede estar en blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="numero de cuenta bancaria"
+                        <input id="numero_de_cuenta_bancaria"
                             class="form-control"
                             type="text"
-                            name="cuenta bancaria"
+                            name="cuenta_bancaria"
                             placeholder="numero de cuenta bancaria"
                             required>
-                        <div class="valid-feedback">El numero de cuenta es
-                            valido!</div>
-                        <div class="invalid-feedback">El campo numero de cuenta
-                            no puede estar vacio!</div>
+                        <div class="valid-feedback">El numero de cuenta es valido!</div>
+                        <div class="invalid-feedback">El campo numero de cuenta no puede estar vacio!</div>
                     </div>
                     <div class="col-md-12">
                         <input id="correo"
@@ -80,16 +85,15 @@
                             placeholder="correo electronico"
                             required>
                         <div class="valid-feedback">El correo es valido!</div>
-                        <div class="invalid-feedback">El campo correo no puede
-                            estar vacio!</div>
+                        <div class="invalid-feedback">El campo correo no puede estar vacio!</div>
                     </div>
                     <div class="form-button mt-3">
-                        <a onclick="credito()" zid="submit" type="submit"
-                            class="btn btn-primary form-button">PAGAR</a>
+                        <a onclick="Creditoeducativo()" zid="submit" type="button" class="btn btn-primary form-button">PAGAR</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
