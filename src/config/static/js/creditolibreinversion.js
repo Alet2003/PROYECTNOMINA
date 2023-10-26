@@ -134,3 +134,45 @@ function Creditoeducativo() {
         })
     }
 }
+
+
+function Creditohipotecario(){
+    var nombre = document.getElementById("nombre").value;
+    var MontoCredito = document.getElementById("monto").value;
+    var TasaInteres = document.getElementById("tasaInteresAnual").value;
+    var PlazoCredito = document.getElementById("plazo").value;
+    const cci = MontoCredito / PlazoCredito;
+    var CuotasMensuales = cci.toFixed(2);
+    var EstadoCredito = "aprobado";
+    var IDEmpleado = document.getElementById("documento").value;
+    axios
+      .post(
+        "/api/save_creditos",
+        {
+          MontoCredito: MontoCredito,
+          TasaInteres: TasaInteres,
+          PlazoCredito: PlazoCredito,
+          CuotasMensuales: CuotasMensuales,
+          EstadoCredito: EstadoCredito,
+          IDEmpleado: IDEmpleado,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function (respuesta) {
+        console.log(respuesta.data);
+        if (respuesta.data === "aprobado") {
+          Swal.fire({
+            title: "Felicidades credito aprobado",
+            text: `el empleado ${nombre} ha obtenido un credito por el monto de ${MontoCredito}, el credito debe ser pagado en un plazo de ${PlazoCredito} meses, el valor de las cuotas es de : $ ${CuotasMensuales}`,
+          });
+        } else {
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+}
