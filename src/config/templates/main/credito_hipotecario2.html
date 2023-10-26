@@ -9,7 +9,7 @@
             <div class="form-items">
                 <h2>Solo un paso mas</h2>
                 <p>llene los siguientes datos obligatorios.</p>
-                <form class="requires-validation" novalidate>
+               
                     <div class="col-md-12">
                         <input id="nombre"
                             class="form-control"
@@ -43,20 +43,23 @@
                             valido!</div>
                         <div class="invalid-feedback">el valor no puede estar en
                             blanco!</div>
-                    </div>
+                    </div>            
                     <div class="col-md-12">
                         <input id="Ahorro10%"
                             class="form-control"
                             type="number"
                             name="Ahorro_Minimo"
                             placeholder="Ahorro minimo 10% del valor de la vivienda"
-                            required>
+                            required 
+                            readonly>
                         <div class="valid-feedback">el va es
                             valido!</div>
                         <div class="invalid-feedback">el valor no puede estar en
                             blanco!</div>
 
                             <script>
+                                                //calcula 10% del valor de la vivienda//
+
                                 // Obtén los elementos de entrada de valor de vivienda y ahorro mínimo
                                 const valorViviendaInput = document.querySelector("input[name='Monto']");
                                 const ahorroMinimoInput = document.querySelector("input[name='Ahorro_Minimo']");
@@ -88,30 +91,104 @@
                     <option value="1">Si</option>
                     <option value="2">No</option>
                     </select>
-                    <div class="col-md-12">
-                        <input id="plazo"
-                            class="form-control"
-                            type="number"
-                            name="plazo"
-                            placeholder="Plazo en Años"
-                            required>
-                        <div class="valid-feedback">el plazo es
-                            valido!</div>
-                        <div class="invalid-feedback">el plazo no puede estar en
-                            blanco!</div>
-                    </div>
-                    <div class="col-md-12">
-                        <input id="cuotas"
-                            class="form-control"
-                            type="number"
-                            name="cuotas"
-                            placeholder=" Numero de cuotas en años"
-                            required>
-                        <div class="valid-feedback">el cuotas es
-                            valido!</div>
-                        <div class="invalid-feedback">el cuotas no puede estar en
-                            blanco!</div>
-                    </div>
+                   
+          
+                <select id="interesSocialSelect" 
+                class="form-select col-md-12" 
+                aria-label="Default select example" 
+                style="color:rgb(121, 121, 121)">
+                    <option selected>La vivienda es de interés social?</option>
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
+             
+
+
+<div class="col-md-12">
+    <input id="tasaInteresAnual" class="form-control" type="text" name="interes" placeholder="Tasa de interés anual" required readonly>
+    <div class="valid-feedback">El correo es valido!</div>
+    <div class="invalid-feedback">El campo correo no puede estar vacío!</div>
+</div>
+
+<script> 
+                               ///sacar la tasa de interes si es social o no///
+    // Agrega un evento de escucha al campo de selección "La vivienda es de interés social?"
+    document.getElementById("interesSocialSelect").addEventListener("change", function() {
+        const tasaInteresAnualInput = document.getElementById("tasaInteresAnual");
+        const interesSocialValue = this.value;
+        
+        if (interesSocialValue === "1") {
+            // Si la vivienda es de interés social, establece la tasa de interés al 0.5%
+            tasaInteresAnualInput.value = "0.5%";
+        } else if (interesSocialValue === "2") {
+            // Si la vivienda no es de interés social, establece la tasa de interés al 1.5%
+            tasaInteresAnualInput.value = "1.5%";
+        }
+         else {
+             // Si el usuario ingresa un valor no válido, borra el campo de ahorro mínimo
+            ahorroMinimoInput.value = "";
+        }
+    });
+</script>
+
+    </div>  
+    
+    
+
+      
+    <div class="col-md-12">
+    <input id="plazo"
+        class="form-control"
+        type="number"
+        name="plazo"
+        placeholder="Plazo en Años"
+        required>
+    <div class="valid-feedback">el plazo es
+        valido!</div>
+    <div class="invalid-feedback">el plazo no puede estar en
+        blanco!</div>
+</div>
+<div class="col-md-12">
+    <input id="cuotas"
+        class="form-control"
+        type="number"
+        name="cuotas"
+        placeholder="Cuota mensual"
+        required>
+    <div class="valid-feedback">la cuota es
+        valida!</div>
+    <div class="invalid-feedback">La cuota no puede estar en
+        blanco!</div>
+</div>
+
+<script>
+    function calcularCuotaMensual() {
+        // Obtén los valores ingresados por el usuario
+        const valorVivienda = parseFloat(document.querySelector("input[name='Monto']").value);
+        const plazoAnios = parseInt(document.querySelector("input[name='plazo']").value);
+        const tasaInteresAnual = parseFloat(document.querySelector("input[name='interes']").value); // Obtén la tasa de interés del campo correspondiente
+
+        // Verifica que los valores sean números válidos
+        if (!isNaN(valorVivienda) && !isNaN(plazoAnios) && !isNaN(tasaInteresAnual)) {
+            // Calcula la tasa de interés mensual
+            const tasaInteresMensual = (tasaInteresAnual / 12) / 100;
+
+            // Calcula el plazo en meses
+            const plazoMeses = plazoAnios * 12;
+
+            // Calcula la cuota mensual
+            const cuotaMensual = (valorVivienda * tasaInteresMensual) / (1 - Math.pow(1 + tasaInteresMensual, -plazoMeses));
+
+            // Muestra la cuota mensual en el campo correspondiente
+            document.querySelector("input[name='cuotas']").value = cuotaMensual.toFixed(2);
+        }
+    }
+
+    // Agrega un evento de escucha a los campos relevantes para calcular la cuota al cambiar su valor
+    document.querySelector("input[name='plazo']").addEventListener("input", calcularCuotaMensual);
+    document.querySelector("input[name='interes']").addEventListener("input", calcularCuotaMensual);
+</script>
+
                     <select style="color:rgb(121, 121, 121)"
                         class="form-select col-md-12"
                         aria-label="Default select example">
