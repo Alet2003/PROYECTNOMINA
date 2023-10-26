@@ -1,166 +1,163 @@
 {% extends '/main/credito_hipotecario.html' %}
 {% block body %}
-<div
-    style="margin-top: 20dvh; margin-left: 20dvh; margin-right: 20dvh; margin-bottom: 50dvh;"
-    class="row">
-    
+<div style="margin-top: 20dvh; margin-left: 20dvh; margin-right: 20dvh; margin-bottom: 50dvh;" class="row">
+
     <div class="form-holder">
         <div class="form-content">
             <div class="form-items">
                 <h2>Solo un paso mas</h2>
                 <p>llene los siguientes datos obligatorios.</p>
-               
-                    <div class="col-md-12">
-                        <input id="nombre"
-                            class="form-control"
-                            type="text"
-                            name="nombre"
-                            placeholder="Nombre del empleado"
-                            required>
-                        <div class="valid-feedback">Nombre es valido!</div>
-                        <div class="invalid-feedback">Campo nombre no es valido!</div>
-                    </div>
-                    <div class="col-md-12">
-                        <input id="documento"
-                            class="form-control"
-                            type="number"
-                            name="documento"
-                            placeholder="Documento del empleado"
-                            required>
-                        <div class="valid-feedback">El Documento es valido!</div>
-                        <div class="invalid-feedback">El campo Documento no
-                            puede
-                            estar vacio!</div>
-                    </div>
-                    <div class="col-md-12">
-                        <input id="monto"
-                            class="form-control"
-                            type="number"
-                            name="Monto"
-                            placeholder="Valor de la vivienda"
-                            required>
-                        <div class="valid-feedback">el valor de la vivienda es
-                            valido!</div>
-                        <div class="invalid-feedback">el valor no puede estar en
-                            blanco!</div>
-                    </div>            
-                    <div class="col-md-12">
-                        <input id="Ahorro10%"
-                            class="form-control"
-                            type="number"
-                            name="Ahorro_Minimo"
-                            placeholder="Ahorro minimo 10% del valor de la vivienda"
-                            required 
-                            readonly>
-                        <div class="valid-feedback">el va es
-                            valido!</div>
-                        <div class="invalid-feedback">el valor no puede estar en
-                            blanco!</div>
 
-                            <script>
-                                                //calcula 10% del valor de la vivienda//
+                <div class="col-md-12">
+                    <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombre del empleado"
+                        required>
+                    <div class="valid-feedback">Nombre es valido!</div>
+                    <div class="invalid-feedback">Campo nombre no es valido!</div>
+                </div>
+                <div class="col-md-12">
+                    <input id="documento" class="form-control" type="number" name="documento"
+                        placeholder="Documento del empleado" required>
+                    <div class="valid-feedback">El Documento es valido!</div>
+                    <div class="invalid-feedback">El campo Documento no
+                        puede
+                        estar vacio!</div>
+                </div>
+                <div class="col-md-12">
+                    <input id="monto" class="form-control" type="number" name="Monto" placeholder="Valor de la vivienda"
+                        required>
+                    <div class="valid-feedback">el valor de la vivienda es
+                        valido!</div>
+                    <div class="invalid-feedback">el valor no puede estar en
+                        blanco!</div>
+                </div>
+                <div class="col-md-12">
+                    <input id="Ahorro10%" class="form-control" type="number" name="Ahorro_Minimo"
+                        placeholder="Ahorro minimo 10% del valor de la vivienda" required readonly>
+                    <div class="valid-feedback">el va es
+                        valido!</div>
+                    <div class="invalid-feedback">el valor no puede estar en
+                        blanco!</div>
 
-                                // Obtén los elementos de entrada de valor de vivienda y ahorro mínimo
-                                const valorViviendaInput = document.querySelector("input[name='Monto']");
-                                const ahorroMinimoInput = document.querySelector("input[name='Ahorro_Minimo']");
-                            
-                                // Agrega un evento de escucha al valor de vivienda para calcular el ahorro mínimo
-                                valorViviendaInput.addEventListener("input", () => {
-                                    // Obten el valor ingresado por el usuario y conviértelo a un número
-                                    const valorVivienda = parseFloat(valorViviendaInput.value);
-                            
-                                    // Verifica si el valor es un número válido
-                                    if (!isNaN(valorVivienda)) {
-                                        // Calcula el 10% del valor de la vivienda
-                                        const ahorroMinimo = valorVivienda * 0.10;
-                            
-                                        // Establece el valor calculado en el campo de ahorro mínimo
-                                        ahorroMinimoInput.value = ahorroMinimo;
-                                    } else {
-                                        // Si el usuario ingresa un valor no válido, borra el campo de ahorro mínimo
-                                        ahorroMinimoInput.value = "";
-                                    }
-                                });
-                            </script>
-                            
-                    </div>
-                    <select style="color:rgb(121, 121, 121)"
-                    class="form-select col-md-12"
+
+                </div>
+                <select style="color:rgb(121, 121, 121)" class="form-select col-md-12"
                     aria-label="Default select example">
                     <option selected>Cuenta con el ahorro minimo?</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
-                    </select>
-                   
-          
-                <select id="interesSocialSelect" 
-                class="form-select col-md-12" 
-                aria-label="Default select example" 
-                style="color:rgb(121, 121, 121)">
+                </select>
+
+
+                <select id="interesSocialSelect" class="form-select col-md-12" aria-label="Default select example"
+                    style="color:rgb(121, 121, 121)">
                     <option selected>La vivienda es de interés social?</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
-             
 
 
-<div class="col-md-12">
-    <input id="tasaInteresAnual" class="form-control" type="text" name="interes" placeholder="Tasa de interés anual" required readonly>
-    <div class="valid-feedback">El correo es valido!</div>
-    <div class="invalid-feedback">El campo correo no puede estar vacío!</div>
+
+                <div class="col-md-12">
+                    <input id="tasaInteresAnual" class="form-control" type="text" name="interes"
+                        placeholder="Tasa de interés anual" required readonly>
+                    <div class="valid-feedback">El correo es valido!</div>
+                    <div class="invalid-feedback">El campo correo no puede estar vacío!</div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="col-md-12">
+                <input id="plazo" class="form-control" type="number" name="plazo" placeholder="Plazo en Años" required>
+                <div class="valid-feedback">el plazo es
+                    valido!</div>
+                <div class="invalid-feedback">el plazo no puede estar en
+                    blanco!</div>
+            </div>
+            <div class="col-md-12">
+                <input id="cuotas" class="form-control" type="number" name="cuotas" placeholder="Cuota mensual"
+                    required>
+                <div class="valid-feedback">la cuota es
+                    valida!</div>
+                <div class="invalid-feedback">La cuota no puede estar en
+                    blanco!</div>
+            </div>
+
+            <select style="color:rgb(121, 121, 121)" class="form-select col-md-12" aria-label="Default select example">
+                <option selected>Tiene cuenta con banca ADSI?</option>
+                <option value="1">Si</option>
+                <option value="2">No</option>
+            </select>
+            <div class="col-md-12">
+                <input id="numero de cuenta bancaria" class="form-control" type="text" name="cuenta bancaria"
+                    placeholder="Numero de cuenta bancaria" required>
+                <div class="valid-feedback">El numero de cuenta es
+                    valido!</div>
+                <div class="invalid-feedback">El campo numero de cuenta
+                    no puede estar vacio!</div>
+            </div>
+            <div class="col-md-12">
+                <input id="correo" class="form-control" type="text" name="correo electronico"
+                    placeholder="Correo electronico" required>
+                <div class="valid-feedback">El correo es valido!</div>
+                <div class="invalid-feedback">El campo correo no puede
+                    estar vacio!</div>
+            </div>
+            <div class="form-button mt-3">
+                <a onclick="Creditohipotecario()" zid="submit" type="submit" class="btn btn-primary form-button">PAGAR</a>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 
-<script> 
-                               ///sacar la tasa de interes si es social o no///
-    // Agrega un evento de escucha al campo de selección "La vivienda es de interés social?"
-    document.getElementById("interesSocialSelect").addEventListener("change", function() {
-        const tasaInteresAnualInput = document.getElementById("tasaInteresAnual");
-        const interesSocialValue = this.value;
-        
-        if (interesSocialValue === "1") {
-            // Si la vivienda es de interés social, establece la tasa de interés al 0.5%
-            tasaInteresAnualInput.value = "0.5%";
-        } else if (interesSocialValue === "2") {
-            // Si la vivienda no es de interés social, establece la tasa de interés al 1.5%
-            tasaInteresAnualInput.value = "1.5%";
-        }
-         else {
-             // Si el usuario ingresa un valor no válido, borra el campo de ahorro mínimo
+<script>
+    //calcula 10% del valor de la vivienda//
+
+    // Obtén los elementos de entrada de valor de vivienda y ahorro mínimo
+    const valorViviendaInput = document.querySelector("input[name='Monto']");
+    const ahorroMinimoInput = document.querySelector("input[name='Ahorro_Minimo']");
+
+    // Agrega un evento de escucha al valor de vivienda para calcular el ahorro mínimo
+    valorViviendaInput.addEventListener("input", () => {
+        // Obten el valor ingresado por el usuario y conviértelo a un número
+        const valorVivienda = parseFloat(valorViviendaInput.value);
+
+        // Verifica si el valor es un número válido
+        if (!isNaN(valorVivienda)) {
+            // Calcula el 10% del valor de la vivienda
+            const ahorroMinimo = valorVivienda * 0.10;
+
+            // Establece el valor calculado en el campo de ahorro mínimo
+            ahorroMinimoInput.value = ahorroMinimo;
+        } else {
+            // Si el usuario ingresa un valor no válido, borra el campo de ahorro mínimo
             ahorroMinimoInput.value = "";
         }
     });
 </script>
+<script>
+    ///sacar la tasa de interes si es social o no///
+    // Agrega un evento de escucha al campo de selección "La vivienda es de interés social?"
+    document.getElementById("interesSocialSelect").addEventListener("change", function () {
+        const tasaInteresAnualInput = document.getElementById("tasaInteresAnual");
+        const interesSocialValue = this.value;
 
-    </div>  
-    
-    
-
-      
-    <div class="col-md-12">
-    <input id="plazo"
-        class="form-control"
-        type="number"
-        name="plazo"
-        placeholder="Plazo en Años"
-        required>
-    <div class="valid-feedback">el plazo es
-        valido!</div>
-    <div class="invalid-feedback">el plazo no puede estar en
-        blanco!</div>
-</div>
-<div class="col-md-12">
-    <input id="cuotas"
-        class="form-control"
-        type="number"
-        name="cuotas"
-        placeholder="Cuota mensual"
-        required>
-    <div class="valid-feedback">la cuota es
-        valida!</div>
-    <div class="invalid-feedback">La cuota no puede estar en
-        blanco!</div>
-</div>
-
+        if (interesSocialValue === "1") {
+            // Si la vivienda es de interés social, establece la tasa de interés al 0.5%
+            tasaInteresAnualInput.value = 0.5;
+        } else if (interesSocialValue === "2") {
+            // Si la vivienda no es de interés social, establece la tasa de interés al 1.5%
+            tasaInteresAnualInput.value = 1.5;
+        }
+        else {
+            // Si el usuario ingresa un valor no válido, borra el campo de ahorro mínimo
+            ahorroMinimoInput.value = "";
+        }
+    });
+</script>
 <script>
     function calcularCuotaMensual() {
         // Obtén los valores ingresados por el usuario
@@ -188,44 +185,4 @@
     document.querySelector("input[name='plazo']").addEventListener("input", calcularCuotaMensual);
     document.querySelector("input[name='interes']").addEventListener("input", calcularCuotaMensual);
 </script>
-
-                    <select style="color:rgb(121, 121, 121)"
-                        class="form-select col-md-12"
-                        aria-label="Default select example">
-                        <option selected>Tiene cuenta con banca ADSI?</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                    <div class="col-md-12">
-                        <input id="numero de cuenta bancaria"
-                            class="form-control"
-                            type="text"
-                            name="cuenta bancaria"
-                            placeholder="Numero de cuenta bancaria"
-                            required>
-                        <div class="valid-feedback">El numero de cuenta es
-                            valido!</div>
-                        <div class="invalid-feedback">El campo numero de cuenta
-                            no puede estar vacio!</div>
-                    </div>
-                    <div class="col-md-12">
-                        <input id="correo"
-                            class="form-control"
-                            type="text"
-                            name="correo electronico"
-                            placeholder="Correo electronico"
-                            required>
-                        <div class="valid-feedback">El correo es valido!</div>
-                        <div class="invalid-feedback">El campo correo no puede
-                            estar vacio!</div>
-                    </div>
-                    <div class="form-button mt-3">
-                        <a onclick="credito()" zid="submit" type="submit"
-                            class="btn btn-primary form-button">PAGAR</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
