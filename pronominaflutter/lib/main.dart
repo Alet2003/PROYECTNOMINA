@@ -19,11 +19,11 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PAGO NOMINA', style: TextStyle(color: Color(0xFFFFC800))),
+        title: Text('PAGO NOMINA', style: TextStyle(color: Color(0xFF39c545))),
         backgroundColor: Colors.black,
         actions: [],
       ),
-      endDrawer: MyCustomDrawer(), // Usa tu cajón personalizado aquí
+      endDrawer: MyCustomDrawer(),
       body: MyPage(),
     );
   }
@@ -38,14 +38,14 @@ class MyCustomDrawer extends StatelessWidget {
           child: Container(
             margin:
                 EdgeInsetsDirectional.symmetric(horizontal: 0, vertical: 45),
-            width: 400, // Personaliza el ancho de tu cajón
-            color: Colors.black, // Personaliza el color de fondo
+            width: 400,
+            color: Colors.black,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ListTile(
                   title: Text('PAGAR NOMINA',
-                      style: TextStyle(color: Color(0xFFFFC800))),
+                      style: TextStyle(color: Color(0xFF39c545))),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
                     // Navegar a la página de inicio
@@ -54,7 +54,7 @@ class MyCustomDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('PRESTAMOS',
-                      style: TextStyle(color: Color(0xFFFFC800))),
+                      style: TextStyle(color: Color(0xFF39c545))),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
                     // Navegar a la página de carrito
@@ -63,7 +63,7 @@ class MyCustomDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('HISTORIAL DE PAGOS',
-                      style: TextStyle(color: Color(0xFFFFC800))),
+                      style: TextStyle(color: Color(0xFF39c545))),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
                     // Navegar a la página de carrito
@@ -83,14 +83,25 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        child: Stack(
+      child: Column(children: [
+        Stack(
           children: [
             Image(
               image: AssetImage(
                   'assets/img/primer-plano-manos-contador-contando-calculadora.jpg'),
               width: double.infinity,
               fit: BoxFit.cover, // Ajusta la imagen al tamaño del contenedor
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              width: 500,
+              height: 300,
+              child: Container(
+                width: 500,
+                height: 200,
+                decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
+              ),
             ),
             Positioned(
               top: 40, // Ajusta la posición vertical del texto
@@ -120,21 +131,38 @@ class MyPage extends StatelessWidget {
             ),
             Positioned(
               top: 140,
-              left: 80,
-              width: 300,
-              height: 80,
-              child: FloatingActionButton(
-              child: Text("PAGAR NOMINA"),
-                onPressed: () {
-
-              },
-                backgroundColor: Color(0xFFFFC800), 
-                ),
+              left: 135,
+              width: 150,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Color(0xFF39c545)),
+                child: Text("PAGAR NOMINA"),
+                onPressed: () {},
               ),
-
+            ),
           ],
         ),
-      ),
+        Container(
+          width: 300,
+            height: 80,
+
+            alignment: Alignment.bottomCenter,
+            //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
+            child:
+            Text("PAGAR NOMINA", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        ),
+        SizedBox(
+          height: 3,
+        ),
+        Container(
+          width: 300,
+          height: 50,
+          alignment: Alignment.topCenter,
+          //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
+          child:
+          Text("Aquí puedes pagar a tus empleados", style: TextStyle(fontSize: 15)),
+        ),
+      ]),
     );
   }
 }
