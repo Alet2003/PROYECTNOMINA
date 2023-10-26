@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-12">
                         <input id="documento"
-                            class "form-control"
+                            class="form-control"
                             type="number"
                             name="documento"
                             placeholder="Documento del empleado"
@@ -27,7 +27,17 @@
                         <div class="valid-feedback">El Documento es valido!</div>
                         <div class="invalid-feedback">El campo Documento no puede estar vacio!</div>
                     </div>
-
+                    <div class="col-md-12">
+                        <input id="plazo"
+                            class="form-control"
+                            type="number"
+                            name="plazo"
+                            placeholder="plazo del credito"
+                            required>
+                        <div class="valid-feedback">El plazo es valido!</div>
+                        <div class="invalid-feedback">El campo plazo no puede estar vacio!</div>
+                    </div>
+                    
                     <select style="color:rgb(121, 121, 121)"
                         class="form-select col-md-12"
                         id="tipo_carrera"
@@ -78,61 +88,12 @@
                         <div class="invalid-feedback">El campo correo no puede estar vacio!</div>
                     </div>
                     <div class="form-button mt-3">
-                        <a onclick="validarCredito()" zid="submit" type="button" class="btn btn-primary form-button">PAGAR</a>
+                        <a onclick="Creditoeducativo()" zid="submit" type="button" class="btn btn-primary form-button">PAGAR</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-function validarCredito() {
-    const tipoCarrera = document.getElementById("tipo_carrera").value;
-    const tipoCredito = document.getElementById("tipo_credito").value;
-    const valorSemestre = parseFloat(document.getElementById("valor_del_semestre").value);
-
-    if (
-        (tipoCarrera === "tecnologico" || tipoCarrera === "profesional") &&
-        (tipoCredito === "completa" || (tipoCredito === "semestre" && valorSemestre <= 2800000))
-    ) {
-        alert("El crédito es válido");
-    } else {
-        alert("Por favor, verifique los requisitos para el crédito.");
-    }
-}
-</script>
-
-<script>
-    function validarCredito() {
-        const tipoCarrera = document.getElementById("tipo_carrera").value;
-        const tipoCredito = document.getElementById("tipo_credito").value;
-        const valorSemestre = parseFloat(document.getElementById("valor_del_semestre").value);
-    
-        if (tipoCarrera && tipoCredito && !isNaN(valorSemestre)) {
-            if (
-                (tipoCarrera === "tecnologico" || tipoCarrera === "profesional") &&
-                (tipoCredito === "completa" || (tipoCredito === "semestre" && valorSemestre <= 2800000))
-            ) {
-                Swal.fire({
-                    title: 'El crédito es válido',
-                   
-                    text: `Su credito a sido aprobado` ,
-                })
-            } else {
-                Swal.fire({
-                    title: 'Por favor, verifique los requisitos para el crédito.',
-                    text: `verifique que el valor del semestre no sea mayor de 2800000` ,
-                })
-            }
-        } else {
-            Swal.fire({
-                title: 'Por favor, llene todos los campos obligatorios.',
-                text: `verifique que todos los campos esten correctamente llenos` ,
-            })
-        }
-    }
-    </script>
-    
 
 {% endblock %}
