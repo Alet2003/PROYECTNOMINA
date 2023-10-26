@@ -34,8 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const netoAPagar = totalDevengado - totalDeducido;
 
         // Muestra los resultados
-        resultado.innerHTML = `
-            <h2>Resultados de la Nómina para ${nombre}</h2>
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            // title: '¡Estos son los resultados!',
+            html: `<h2>Resultados de la Nómina para ${nombre}</h2>
             <p>SALARIO TOTAL: ${salarioTotal.toFixed(2)}</p>
             <p>AUXILIO TRANSPORTE: ${auxilioTransporte.toFixed(2)}</p>
             <p>VALOR HORAS EXTRAS: ${valorHorasExtras.toFixed(2)}</p>
@@ -45,10 +48,13 @@ document.addEventListener('DOMContentLoaded', function () {
             <p>LIBRANZA: ${descuentoLibranza.toFixed(2)}</p>
             <p>SALUD: ${descuentoSalud.toFixed(2)}</p>
             <p>PENSIÓN: ${descuentoPension.toFixed(2)}</p>
-            <h3>NETO A PAGAR: ${netoAPagar.toFixed(2)}</h3>
-        `;
+            <h3>NETO A PAGAR: ${netoAPagar.toFixed(2)}</h3>`,
+            showConfirmButton: false,
+            timer: 60000, // 1 minuto
+          });
     }
 
+ 
     function calcularAuxilioTransporte(salarioTotal) {
         if (salarioTotal <= SALARIO_MINIMO_VIGENTE) {
             return 200000; // Valor del auxilio mensual vigente
