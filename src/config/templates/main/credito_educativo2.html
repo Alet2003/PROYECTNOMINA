@@ -114,12 +114,22 @@ function validarCredito() {
                 (tipoCarrera === "tecnologico" || tipoCarrera === "profesional") &&
                 (tipoCredito === "completa" || (tipoCredito === "semestre" && valorSemestre <= 2800000))
             ) {
-                alert("El crédito es válido");
+                Swal.fire({
+                    title: 'El crédito es válido',
+                   
+                    text: `Su credito a sido aprobado` ,
+                })
             } else {
-                alert("Por favor, verifique los requisitos para el crédito.");
+                Swal.fire({
+                    title: 'Por favor, verifique los requisitos para el crédito.',
+                    text: `verifique que el valor del semestre no sea mayor de 2800000` ,
+                })
             }
         } else {
-            alert("Por favor, llene todos los campos obligatorios.");
+            Swal.fire({
+                title: 'Por favor, llene todos los campos obligatorios.',
+                text: `verifique que todos los campos esten correctamente llenos` ,
+            })
         }
     }
     </script>
