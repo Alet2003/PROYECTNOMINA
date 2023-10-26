@@ -28,7 +28,7 @@ def indexcreditohipotecario():
 
 @routes_home.route('/indexcreditohipotecario2', methods=['GET'] )
 def indexcreditohipotecario2():
-    return render_template('/main/creditohipotecario2.html')
+    return render_template('/main/credito_hipotecario2.html')
 
 @routes_home.route('/indexcreditoeducativo', methods=['GET'] )
 def indexcreditoeducativo():

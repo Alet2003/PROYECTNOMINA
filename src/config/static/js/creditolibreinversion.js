@@ -5,6 +5,13 @@ function validarcredito(){
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditolibreinversion2")
     }
 }
+function validarcreditohipotecario(){
+    var edad = document.getElementById("edad").value ;
+    var salariom = document.getElementById("Salario_mensual").value ;
+    if (edad >= 30 && salariom >= 2000000) {
+        document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditohipotecario2")
+    }
+}
 
 function validarcreditoeducativo(){
     var edad = document.getElementById("edad").value ;
@@ -13,6 +20,8 @@ function validarcreditoeducativo(){
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditoeducativo2")
     }
 }
+
+
 function credito() {
     var nombre = document.getElementById("nombre").value
     var MontoCredito = document.getElementById("monto").value;
