@@ -36,8 +36,11 @@ function credito() {
         TasaInteres = 0.2;
     }
     var cci = MontoCredito * TasaInteres
-    var cuotas = cci + MontoCredito /  PlazoCredito / CuotasMensuales
-    console.log( MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado);
+    var creditoconinteres= parseInt(cci) + parseInt(MontoCredito)
+    var cuotas = creditoconinteres /  PlazoCredito 
+    var cuotafin = cuotas / CuotasMensuales
+    const cuotasMensuales = cuotafin.toFixed(2)
+    console.log( cci, creditoconinteres, cuotas, cuotafin, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado);
 
     axios.post('/api/save_creditos', {
         MontoCredito: MontoCredito,
@@ -56,7 +59,7 @@ function credito() {
         if (respuesta.data === "aprobado") {
             Swal.fire({
                 title: 'Felicidades credito aprobado',
-                text: `el empleado ${nombre} ha obtenido un creito por el monto de ${MontoCredito}, las cuotas tienen un valor de ${cuotas.toFixed(2)}, el credito debe ser pagado en un plazo de ${PlazoCredito}` ,
+                text: `el empleado ${nombre} ha obtenido un creito por el monto de ${MontoCredito}, las cuotas tienen un valor de ${cuotasMensuales}, el credito debe ser pagado en un plazo de ${PlazoCredito}` ,
             })
         
         } else {
