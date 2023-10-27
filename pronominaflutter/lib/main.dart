@@ -20,7 +20,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PAGO NOMINA', style: TextStyle(color: Color(0xFF39c545))),
+        title: Text('PAGO NOMINA', style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Roboto Slab', fontStyle: FontStyle.italic, fontWeight: FontWeight.w500)),
         backgroundColor: Colors.black,
         actions: [],
       ),
@@ -46,7 +46,7 @@ class MyCustomDrawer extends StatelessWidget {
               children: [
                 ListTile(
                   title: Text('PAGAR NOMINA',
-                      style: TextStyle(color: Color(0xFF39c545))),
+                      style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Montserrat')),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
                     // Navegar a la página de inicio
@@ -55,7 +55,7 @@ class MyCustomDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('PRESTAMOS',
-                      style: TextStyle(color: Color(0xFF39c545))),
+                      style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Montserrat')),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
                     // Navegar a la página de carrito
@@ -64,7 +64,7 @@ class MyCustomDrawer extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text('HISTORIAL DE PAGOS',
-                      style: TextStyle(color: Color(0xFF39c545))),
+                      style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Montserrat')),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
                     // Navegar a la página de carrito
@@ -108,24 +108,27 @@ class MyPage extends StatelessWidget {
               top: 40, // Ajusta la posición vertical del texto
               left: 80, // Ajusta la posición horizontal del texto
               child: Text(
-                "BIENVENIDO",
+                "BIENVENIDO!",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 40,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto Slab',
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.italic,
                 ),
               ),
             ),
             Positioned(
               top: 100, // Ajusta la posición vertical del texto
-              left: 40, // Ajusta la posición horizontal del texto
+              left: 60, // Ajusta la posición horizontal del texto
               child: Text(
-                "¿QUÉ LE GUSTARÍA HACER?",
+                "¿QUÉ DESEAS HACER HOY?",
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: 20,
+                  fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -137,7 +140,7 @@ class MyPage extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Color(0xFF39c545)),
-                child: Text("PAGAR NOMINA"),
+                child: Text("PAGAR NOMINA", style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 13),),
                 onPressed: () {},
               ),
             ),
@@ -149,7 +152,7 @@ class MyPage extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
           child: Text("PAGAR NOMINA",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 30, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)),
         ),
         SizedBox(
           height: 10,
@@ -160,7 +163,7 @@ class MyPage extends StatelessWidget {
           alignment: Alignment.topCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
           child: Text("Aquí puedes pagar a tus empleados",
-              style: TextStyle(fontSize: 12)),
+              style: TextStyle(fontSize: 12.5, fontFamily: 'Roboto Slab', fontStyle: FontStyle.italic, fontWeight: FontWeight.w200, color: Color(0xFF6c757d))),
         ),
         SizedBox(
           height: 10,
@@ -191,6 +194,7 @@ class MyPage extends StatelessWidget {
                     "IR A PAGAR",
                     style: TextStyle(
                       color: Colors.black,
+                      fontFamily: 'Montserrat',
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -207,7 +211,7 @@ class MyPage extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
           child: Text("PRESTAMOS",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 30, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)),
         ),
         SizedBox(
           height: 10,
@@ -218,7 +222,7 @@ class MyPage extends StatelessWidget {
           alignment: Alignment.topCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
           child: Text("VERIFICA Y SOLICITA UN CREDITO",
-              style: TextStyle(fontSize: 10)),
+              style: TextStyle(fontSize: 11, fontFamily: 'Montserrat', fontStyle: FontStyle.italic, color: Color(0xFF6c757d))),
         ),
         SizedBox(
           height: 15,
@@ -232,6 +236,7 @@ class MyPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 10.5,
+                  fontFamily: 'Montserrat', fontStyle: FontStyle.italic, color: Color(0xFF6c757d)
               )),
         ),
         Container(
@@ -257,7 +262,7 @@ class MyPage extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
           child: Text("HISTORIAL DE PAGOS",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'Montserrat')),
         ),
         SizedBox(
           height: 10,
@@ -271,7 +276,8 @@ class MyPage extends StatelessWidget {
               "Aqui podras ver el historial de todos los pagos hechos a tus empleados anteriormente",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 10.5,
+                fontSize: 11.5,
+                  fontFamily: 'Montserrat', fontStyle: FontStyle.italic, color: Color(0xFF6c757d)
               )),
         ),
         SizedBox(
@@ -313,6 +319,7 @@ class MyPage extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -343,6 +350,7 @@ class MyPage extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
+                    fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -355,8 +363,11 @@ class MyPage extends StatelessWidget {
                   "Llena Los siguientes datos y envianos un mensaje ya sea tu opinion, sugerencia o inquietud",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.grey,
+                    fontFamily: 'Roboto Slab',
                     fontSize: 15,
+                    fontWeight: FontWeight.w300,
+                    fontStyle: FontStyle.italic
                   ),
                 ),
               ),
@@ -381,19 +392,19 @@ class MyPage extends StatelessWidget {
                       Container(
                           margin: EdgeInsets.fromLTRB(20, 20, 10, 20),
                           width: 300,
-                          child:     TextField(
+                          child: TextField(
                         style: TextStyle(
-                          fontSize: 20.0, // Tamaño de texto deseado
-                          fontFamily: 'Open Sans',
-                          color: Colors.white, // Color de texto blanco
+                          fontSize: 15.0, // Tamaño de texto deseado
+                          fontFamily: 'Montserrat',
+                          color: Colors.black, // Color de texto blanco
                         ),
                         enableInteractiveSelection: false,
                         //autofocus: true,
                         decoration: InputDecoration(
                           hintText: 'Nombre completo',
                           hintStyle: TextStyle(
-                            color: Color(0xFF212529),
-                            fontFamily: 'Open Sans',
+                            color: Color(0xFF6c757d),
+                            fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                           ),
                           filled: true,
@@ -412,17 +423,17 @@ class MyPage extends StatelessWidget {
                           width: 300,
                           child:     TextField(
                             style: TextStyle(
-                              fontSize: 20.0, // Tamaño de texto deseado
-                              fontFamily: 'Open Sans',
-                              color: Colors.white, // Color de texto blanco
+                              fontSize: 15.0, // Tamaño de texto deseado
+                              fontFamily: 'Montserrat',
+                              color: Colors.black, // Color de texto blanco
                             ),
                             enableInteractiveSelection: false,
                             //autofocus: true,
                             decoration: InputDecoration(
                               hintText: 'Email',
                               hintStyle: TextStyle(
-                                color: Color(0xFF212529),
-                                fontFamily: 'Open Sans',
+                                color: Color(0xFF6c757d),
+                                fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
                               ),
                               filled: true,
@@ -441,17 +452,17 @@ class MyPage extends StatelessWidget {
                           width: 300,
                           child:     TextField(
                             style: TextStyle(
-                              fontSize: 20.0, // Tamaño de texto deseado
-                              fontFamily: 'Open Sans',
-                              color: Colors.white, // Color de texto blanco
+                              fontSize: 15.0, // Tamaño de texto deseado
+                              fontFamily: 'Montserrat',
+                              color: Colors.black, // Color de texto blanco
                             ),
                             enableInteractiveSelection: false,
                             //autofocus: true,
                             decoration: InputDecoration(
                               hintText: 'Numero de telefono',
                               hintStyle: TextStyle(
-                                color: Color(0xFF212529),
-                                fontFamily: 'Open Sans',
+                                color: Color(0xFF6c757d),
+                                fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
                               ),
                               filled: true,
@@ -472,17 +483,17 @@ class MyPage extends StatelessWidget {
                           color: Colors.white,
                           child:     TextField(
                             style: TextStyle(
-                              fontSize: 20.0, // Tamaño de texto deseado
-                              fontFamily: 'Open Sans',
-                              color: Colors.white, // Color de texto blanco
+                              fontSize: 15.0, // Tamaño de texto deseado
+                              fontFamily: 'Montserrat',
+                              color: Colors.black, // Color de texto blanco
                             ),
                             enableInteractiveSelection: false,
                             //autofocus: true,
                             decoration: InputDecoration(
                               hintText: 'Escribe tu mensaje aqui',
                               hintStyle: TextStyle(
-                                color: Color(0xFF212529),
-                                fontFamily: 'Open Sans',
+                                color: Color(0xFF6c757d),
+                                fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
                               ),
                               filled: true,
@@ -507,7 +518,7 @@ class MyPage extends StatelessWidget {
                 height: 60,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Color(0xFF39c545)),
-                  child: Text("ENVIAR MENSAJE"),
+                  child: Text("ENVIAR MENSAJE", style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),),
                   onPressed: () {},
                 ),
               ),
@@ -553,8 +564,9 @@ class MyCarousel extends StatelessWidget {
               Text(
                 credit['text']!,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 13,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Montserrat'
                 ),
               ),
             ],
