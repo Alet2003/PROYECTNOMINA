@@ -1,21 +1,21 @@
-function validarcredito(){
-    var edad = document.getElementById("edad").value ;
-    var salariom = document.getElementById("Salario_mensual").value ;
+function validarcredito() {
+    var edad = document.getElementById("edad").value;
+    var salariom = document.getElementById("Salario_mensual").value;
     if (edad >= 30 && salariom >= 2000000) {
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditolibreinversion2")
     }
 }
-function validarcreditohipotecario(){
-    var edad = document.getElementById("edad").value ;
-    var salariom = document.getElementById("Salario_mensual").value ;
+function validarcreditohipotecario() {
+    var edad = document.getElementById("edad").value;
+    var salariom = document.getElementById("Salario_mensual").value;
     if (edad >= 30 && salariom >= 2000000) {
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditohipotecario2")
     }
 }
 
-function validarcreditoeducativo(){
-    var edad = document.getElementById("edad").value ;
-    var salariom = document.getElementById("Salario_mensual").value ;
+function validarcreditoeducativo() {
+    var edad = document.getElementById("edad").value;
+    var salariom = document.getElementById("Salario_mensual").value;
     if (edad >= 30 && salariom >= 2000000) {
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditoeducativo2")
     }
@@ -37,11 +37,11 @@ function credito() {
         TasaInteres = 0.2;
     }
     var cci = MontoCredito * TasaInteres
-    var creditoconinteres= parseInt(cci) + parseInt(MontoCredito)
-    var cuotas = creditoconinteres /  PlazoCredito 
+    var creditoconinteres = parseInt(cci) + parseInt(MontoCredito)
+    var cuotas = creditoconinteres / PlazoCredito
     var cuotafin = cuotas / CuotasMensuales
     const cuotasMensuales = cuotafin.toFixed(2)
-    console.log( cci, creditoconinteres, cuotas, cuotafin, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado);
+    console.log(cci, creditoconinteres, cuotas, cuotafin, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado);
 
     axios.post('/api/save_creditos', {
         MontoCredito: MontoCredito,
@@ -55,21 +55,21 @@ function credito() {
             'Content-Type': 'application/json'
         }
     })
-    .then(function (respuesta) {
-        console.log(respuesta.data);
-        if (respuesta.data === "aprobado") {
-            Swal.fire({
-                title: 'Felicidades credito aprobado',
-                text: `el empleado ${nombre} ha obtenido un creito por el monto de ${MontoCredito}, las cuotas tienen un valor de ${cuotasMensuales}, el credito debe ser pagado en un plazo de ${PlazoCredito}` ,
-            })
-        
-        } else {
-            
-        }
-    })
-    .catch(function (error) {
-        console.error(error);
-    });
+        .then(function (respuesta) {
+            console.log(respuesta.data);
+            if (respuesta.data === "aprobado") {
+                Swal.fire({
+                    title: 'Felicidades credito aprobado',
+                    text: `el empleado ${nombre} ha obtenido un creito por el monto de ${MontoCredito}, las cuotas tienen un valor de ${cuotasMensuales}, el credito debe ser pagado en un plazo de ${PlazoCredito}`,
+                })
+
+            } else {
+
+            }
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }
 
 
@@ -77,7 +77,7 @@ function Creditoeducativo() {
     const tipoCarrera = document.getElementById("tipo_carrera").value;
     const tipoCredito = document.getElementById("tipo_credito").value;
     const valorSemestre = parseFloat(document.getElementById("valor_del_semestre").value);
- 
+
     if (tipoCarrera && tipoCredito && !isNaN(valorSemestre)) {
         if (
             (tipoCarrera === "tecnologico" || tipoCarrera === "profesional") &&
@@ -91,7 +91,7 @@ function Creditoeducativo() {
             var MontoCredito = document.getElementById("valor_del_semestre").value;
             var TasaInteres = 0;
             var PlazoCredito = document.getElementById("plazo").value;
-            const cci = MontoCredito/ PlazoCredito
+            const cci = MontoCredito / PlazoCredito
             var CuotasMensuales = cci.toFixed(2);
             var EstadoCredito = "aprobado";
             var IDEmpleado = document.getElementById("documento").value;
@@ -139,7 +139,7 @@ function Creditoeducativo() {
 }
 
 
-function Creditohipotecario(){
+function Creditohipotecario() {
     var nombre = document.getElementById("nombre").value;
     var MontoCredito = document.getElementById("monto").value;
     var TasaInteres = document.getElementById("tasaInteresAnual").value;
@@ -149,33 +149,33 @@ function Creditohipotecario(){
     var EstadoCredito = "aprobado";
     var IDEmpleado = document.getElementById("documento").value;
     axios
-      .post(
-        "/api/save_creditos",
-        {
-          MontoCredito: MontoCredito,
-          TasaInteres: TasaInteres,
-          PlazoCredito: PlazoCredito,
-          CuotasMensuales: CuotasMensuales,
-          EstadoCredito: EstadoCredito,
-          IDEmpleado: IDEmpleado,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then(function (respuesta) {
-        console.log(respuesta.data);
-        if (respuesta.data === "aprobado") {
-          Swal.fire({
-            title: "Felicidades credito aprobado",
-            text: `el empleado ${nombre} ha obtenido un credito por el monto de ${MontoCredito}, el credito debe ser pagado en un plazo de ${PlazoCredito} meses, el valor de las cuotas es de : $ ${CuotasMensuales}`,
-          });
-        } else {
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+        .post(
+            "/api/save_creditos",
+            {
+                MontoCredito: MontoCredito,
+                TasaInteres: TasaInteres,
+                PlazoCredito: PlazoCredito,
+                CuotasMensuales: CuotasMensuales,
+                EstadoCredito: EstadoCredito,
+                IDEmpleado: IDEmpleado,
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }
+        )
+        .then(function (respuesta) {
+            console.log(respuesta.data);
+            if (respuesta.data === "aprobado") {
+                Swal.fire({
+                    title: "Felicidades credito aprobado",
+                    text: `el empleado ${nombre} ha obtenido un credito por el monto de ${MontoCredito}, el credito debe ser pagado en un plazo de ${PlazoCredito} meses, el valor de las cuotas es de : $ ${CuotasMensuales}`,
+                });
+            } else {
+            }
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }

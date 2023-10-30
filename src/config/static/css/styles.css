@@ -689,6 +689,11 @@ progress {
   border-radius: 5px;
   padding: 20px;
 }
+#pago{
+  margin-top: 400px !important;
+  margin-bottom: 300px !important;
+}
+
 .row > * {
   flex-shrink: 0;
   width: 100%;
