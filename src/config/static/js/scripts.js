@@ -55,3 +55,18 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
+function validateInput(event) {
+    var input = event.target.value;
+    var regex = /^[a-zA-Z\s]+$/;
+    if (!regex.test(input)) {
+        event.target.value = input.replace(/[^a-zA-Z\s]/g, '');
+    }
+}
+
+function validateInputnumber(event) {
+var input = event.target.value;
+var regex = /^[0-9]+$/;
+if (!regex.test(input)) {
+    event.target.value = input.replace(/[^0-9\s]/g, '');
+}
+}

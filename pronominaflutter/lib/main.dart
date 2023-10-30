@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -16,21 +18,25 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PAGO NOMINA', style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Roboto Slab', fontStyle: FontStyle.italic, fontWeight: FontWeight.w500)),
+        title: const Text('PAGO NOMINA', style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Roboto Slab', fontStyle: FontStyle.italic, fontWeight: FontWeight.w500)),
         backgroundColor: Colors.black,
-        actions: [],
+        actions: const [],
       ),
-      endDrawer: MyCustomDrawer(),
-      body: MyPage(),
+      endDrawer: const MyCustomDrawer(),
+      body: const MyPage(),
     );
   }
 }
 
 class MyCustomDrawer extends StatelessWidget {
+  const MyCustomDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -38,14 +44,14 @@ class MyCustomDrawer extends StatelessWidget {
         Align(
           child: Container(
             margin:
-                EdgeInsetsDirectional.symmetric(horizontal: 0, vertical: 45),
+                const EdgeInsetsDirectional.symmetric(horizontal: 0, vertical: 45),
             width: 400,
             color: Colors.black,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ListTile(
-                  title: Text('PAGAR NOMINA',
+                  title: const Text('PAGAR NOMINA',
                       style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Montserrat')),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
@@ -54,7 +60,7 @@ class MyCustomDrawer extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  title: Text('PRESTAMOS',
+                  title: const Text('PRESTAMOS',
                       style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Montserrat')),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
@@ -63,7 +69,7 @@ class MyCustomDrawer extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  title: Text('HISTORIAL DE PAGOS',
+                  title: const Text('HISTORIAL DE PAGOS',
                       style: TextStyle(color: Color(0xFF39c545), fontFamily: 'Montserrat')),
                   onTap: () {
                     Navigator.pop(context); // Cierra el cajón
@@ -81,13 +87,15 @@ class MyCustomDrawer extends StatelessWidget {
 }
 
 class MyPage extends StatelessWidget {
+  const MyPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(children: [
         Stack(
           children: [
-            Image(
+            const Image(
               image: AssetImage(
                   'assets/img/primer-plano-manos-contador-contando-calculadora.jpg'),
               width: double.infinity,
@@ -104,7 +112,7 @@ class MyPage extends StatelessWidget {
                 decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 40, // Ajusta la posición vertical del texto
               left: 80, // Ajusta la posición horizontal del texto
               child: Text(
@@ -119,7 +127,7 @@ class MyPage extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 100, // Ajusta la posición vertical del texto
               left: 60, // Ajusta la posición horizontal del texto
               child: Text(
@@ -139,8 +147,8 @@ class MyPage extends StatelessWidget {
               width: 150,
               height: 50,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Color(0xFF39c545)),
-                child: Text("PAGAR NOMINA", style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 13),),
+                style: ElevatedButton.styleFrom(primary: const Color(0xFF39c545)),
+                child: const Text("PAGAR NOMINA", style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 13),),
                 onPressed: () {},
               ),
             ),
@@ -151,10 +159,10 @@ class MyPage extends StatelessWidget {
           height: 80,
           alignment: Alignment.bottomCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text("PAGAR NOMINA",
+          child: const Text("PAGAR NOMINA",
               style: TextStyle(fontSize: 30, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -162,10 +170,10 @@ class MyPage extends StatelessWidget {
           height: 50,
           alignment: Alignment.topCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text("Aquí puedes pagar a tus empleados",
+          child: const Text("Aquí puedes pagar a tus empleados",
               style: TextStyle(fontSize: 12.5, fontFamily: 'Roboto Slab', fontStyle: FontStyle.italic, fontWeight: FontWeight.w200, color: Color(0xFF6c757d))),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -174,7 +182,7 @@ class MyPage extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.transparent,
             border: Border.all(
-              color: Color(0xFF39c545),
+              color: const Color(0xFF39c545),
               width: 5.0,
             ),
             borderRadius: BorderRadius.circular(8.0),
@@ -185,12 +193,12 @@ class MyPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.monetization_on,
+                  icon: const Icon(Icons.monetization_on,
                       size: 100, color: Color(0xFF39c545)),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(95, 20, 10, 30),
-                  child: Text(
+                  margin: const EdgeInsets.fromLTRB(95, 20, 10, 30),
+                  child: const Text(
                     "IR A PAGAR",
                     style: TextStyle(
                       color: Colors.black,
@@ -202,7 +210,7 @@ class MyPage extends StatelessWidget {
                 )
               ]),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Container(
@@ -210,10 +218,10 @@ class MyPage extends StatelessWidget {
           height: 80,
           alignment: Alignment.bottomCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text("PRESTAMOS",
+          child: const Text("PRESTAMOS",
               style: TextStyle(fontSize: 30, fontFamily: 'Montserrat', fontWeight: FontWeight.bold)),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -221,10 +229,10 @@ class MyPage extends StatelessWidget {
           height: 50,
           alignment: Alignment.topCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text("VERIFICA Y SOLICITA UN CREDITO",
+          child: const Text("VERIFICA Y SOLICITA UN CREDITO",
               style: TextStyle(fontSize: 11, fontFamily: 'Montserrat', fontStyle: FontStyle.italic, color: Color(0xFF6c757d))),
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Container(
@@ -232,7 +240,7 @@ class MyPage extends StatelessWidget {
           height: 50,
           alignment: Alignment.topCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text("SOLICITA CUALQUIERA DE LOS DIFERENTES TIPOS DE CREDITOS",
+          child: const Text("SOLICITA CUALQUIERA DE LOS DIFERENTES TIPOS DE CREDITOS",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 10.5,
@@ -240,20 +248,20 @@ class MyPage extends StatelessWidget {
               )),
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+          margin: const EdgeInsets.fromLTRB(0, 20, 0, 15),
           width: 300,
           height: 250,
           decoration: BoxDecoration(
             color: Colors.transparent,
             border: Border.all(
-              color: Color(0xFF39c545),
+              color: const Color(0xFF39c545),
               width: 5.0,
             ),
             borderRadius: BorderRadius.circular(8.0),
           ),
-          child: MyCarousel(),
+          child: const MyCarousel(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
@@ -261,10 +269,10 @@ class MyPage extends StatelessWidget {
           height: 80,
           alignment: Alignment.bottomCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text("HISTORIAL DE PAGOS",
+          child: const Text("HISTORIAL DE PAGOS",
               style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'Montserrat')),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -272,7 +280,7 @@ class MyPage extends StatelessWidget {
           height: 50,
           alignment: Alignment.topCenter,
           //padding: EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 80),
-          child: Text(
+          child: const Text(
               "Aqui podras ver el historial de todos los pagos hechos a tus empleados anteriormente",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -280,7 +288,7 @@ class MyPage extends StatelessWidget {
                   fontFamily: 'Montserrat', fontStyle: FontStyle.italic, color: Color(0xFF6c757d)
               )),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -289,7 +297,7 @@ class MyPage extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.transparent,
             border: Border.all(
-              color: Color(0xFF39c545),
+              color: const Color(0xFF39c545),
               width: 5.0,
             ),
             borderRadius: BorderRadius.circular(8.0),
@@ -301,20 +309,20 @@ class MyPage extends StatelessWidget {
               Container(
                 width: 100, // Ancho del círculo
                 height: 100, // Alto del círculo
-                margin: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                decoration: const BoxDecoration(
                   color: Color(0xFF39c545), // Color de fondo del círculo
                   shape: BoxShape.circle, // Establece la forma como un círculo
                 ),
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.h_mobiledata_rounded,
+                  icon: const Icon(Icons.h_mobiledata_rounded,
                       size: 70, color: Colors.white),
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(80, 0, 10, 20),
-                child: Text(
+                margin: const EdgeInsets.fromLTRB(80, 0, 10, 20),
+                child: const Text(
                   "VER HISTORIAL",
                   style: TextStyle(
                     color: Colors.black,
@@ -327,22 +335,22 @@ class MyPage extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 40,
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Container(
           width: 500,
           height: 800,
-          color: Color(0xFF212529),
+          color: const Color(0xFF212529),
           child: Stack(
             children: [
-              Positioned(
+              const Positioned(
                 top: 80,
                 left: 90,
                 child: Text(
@@ -355,7 +363,7 @@ class MyPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 top: 130,
                 left: 20,
                 width: 350,
@@ -376,13 +384,13 @@ class MyPage extends StatelessWidget {
                 left: 20,
                 width: 350,
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 15),
                   width: 300,
                   height: 450,
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     border: Border.all(
-                      color: Color(0xFF39c545),
+                      color: const Color(0xFF39c545),
                       width: 5.0,
                     ),
                     borderRadius: BorderRadius.circular(8.0),
@@ -390,9 +398,9 @@ class MyPage extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(20, 20, 10, 20),
+                          margin: const EdgeInsets.fromLTRB(20, 20, 10, 20),
                           width: 300,
-                          child: TextField(
+                          child: const TextField(
                         style: TextStyle(
                           fontSize: 15.0, // Tamaño de texto deseado
                           fontFamily: 'Montserrat',
@@ -419,9 +427,9 @@ class MyPage extends StatelessWidget {
                       )
                       ),
                       Container(
-                          margin: EdgeInsets.fromLTRB(20, 0, 10, 20),
+                          margin: const EdgeInsets.fromLTRB(20, 0, 10, 20),
                           width: 300,
-                          child:     TextField(
+                          child:     const TextField(
                             style: TextStyle(
                               fontSize: 15.0, // Tamaño de texto deseado
                               fontFamily: 'Montserrat',
@@ -448,9 +456,9 @@ class MyPage extends StatelessWidget {
                           )
                       ),
                       Container(
-                          margin: EdgeInsets.fromLTRB(20, 0, 10, 20),
+                          margin: const EdgeInsets.fromLTRB(20, 0, 10, 20),
                           width: 300,
-                          child:     TextField(
+                          child:     const TextField(
                             style: TextStyle(
                               fontSize: 15.0, // Tamaño de texto deseado
                               fontFamily: 'Montserrat',
@@ -477,11 +485,11 @@ class MyPage extends StatelessWidget {
                           )
                       ),
                       Container(
-                          margin: EdgeInsets.fromLTRB(20, 0, 10, 20),
+                          margin: const EdgeInsets.fromLTRB(20, 0, 10, 20),
                           width: 500,
                           height: 150,
                           color: Colors.white,
-                          child:     TextField(
+                          child:     const TextField(
                             style: TextStyle(
                               fontSize: 15.0, // Tamaño de texto deseado
                               fontFamily: 'Montserrat',
@@ -517,8 +525,8 @@ class MyPage extends StatelessWidget {
                 width: 250,
                 height: 60,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Color(0xFF39c545)),
-                  child: Text("ENVIAR MENSAJE", style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),),
+                  style: ElevatedButton.styleFrom(primary: const Color(0xFF39c545)),
+                  child: const Text("ENVIAR MENSAJE", style: TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),),
                   onPressed: () {},
                 ),
               ),
@@ -547,12 +555,14 @@ class MyCarousel extends StatelessWidget {
     },
   ];
 
+  const MyCarousel({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: creditData.map((credit) {
         return Container(
-          margin: EdgeInsets.all(15),
+          margin: const EdgeInsets.all(15),
           child: Column(
             children: [
               Image.asset(
@@ -560,10 +570,10 @@ class MyCarousel extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: 150, // Alto de la imagen
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 credit['text']!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Montserrat'

@@ -10,7 +10,7 @@
                         <p>Para comenzar verifiquemos si el empleado es apto para el credito educativo</p>
                         <form class="requires-validation" novalidate>
                             <div class="col-md-12">
-                                <input id="edad"
+                                <input oninput="validateInputnumber(event)" id="edad"
                                     class="form-control"
                                     type="number"
                                     name="edad"
@@ -20,8 +20,8 @@
                                 <div class="valid-feedback">edad es valido!</div>
                                 <div class="invalid-feedback">Campo edad no es valido!</div>
                             </div>
-                            <div class="col-md-12">
-                                <input id="Salario_mensual"
+                            <div  class="col-md-12">
+                                <input oninput="validateInputnumber(event)" id="Salario_mensual"
                                     class="form-control"
                                     type="number"
                                     name="Salario mensual"
