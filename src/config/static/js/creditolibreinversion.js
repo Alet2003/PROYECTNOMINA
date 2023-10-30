@@ -2,7 +2,13 @@ function validarcredito() {
     var edad = document.getElementById("edad").value;
     var salariom = document.getElementById("Salario_mensual").value;
     if (edad >= 30 && salariom >= 2000000) {
+
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditolibreinversion2")
+    }else{
+        Swal.fire({
+            title: 'ERROR',
+            text: "El empleado debe cumplir con las siguientes caracteristicas:  -Debe ser mayor a 30 años de edad  y su salario mensual debe ser mayor a 2.000.000",
+        })
     }
 }
 function validarcreditohipotecario() {
@@ -10,6 +16,11 @@ function validarcreditohipotecario() {
     var salariom = document.getElementById("Salario_mensual").value;
     if (edad >= 30 && salariom >= 2000000) {
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditohipotecario2")
+    }else{
+        Swal.fire({
+            title: 'ERROR',
+            text: "El empleado debe cumplir con las siguientes caracteristicas:  -Debe ser mayor a 30 años de edad  y su salario mensual debe ser mayor a 2.000.000",
+        })
     }
 }
 
@@ -18,12 +29,16 @@ function validarcreditoeducativo() {
     var salariom = document.getElementById("Salario_mensual").value;
     if (edad >= 30 && salariom >= 2000000) {
         document.getElementById("verificar").setAttribute("href", "/fronted/indexcreditoeducativo2")
+    }else{
+        Swal.fire({
+            title: 'ERROR',
+            text: "El empleado debe cumplir con las siguientes caracteristicas:  -Debe ser mayor a 30 años de edad  y su salario mensual debe ser mayor a 2.000.000",
+        })
     }
 }
 
 
 function credito() {
-
     var nombre = document.getElementById("nombre").value
     var MontoCredito = document.getElementById("monto").value;
     var TasaInteres = 0;

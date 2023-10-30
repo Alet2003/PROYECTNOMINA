@@ -686,7 +686,7 @@ progress {
   margin-right: calc(-0.5 * var(--bs-gutter-x));
   margin-left: calc(-0.5 * var(--bs-gutter-x));
   border: 5px solid #39c545;
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 20px;
 }
 #pago{
