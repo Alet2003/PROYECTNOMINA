@@ -9,13 +9,13 @@
                 <p>llene los siguientes datos obligatorios.</p>
 
                 <div class="col-md-12">
-                    <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombre del empleado"
+                    <input oninput="validateInput(event)" id="nombre" class="form-control" type="text" name="nombre" placeholder="Nombre del empleado"
                         required>
                     <div class="valid-feedback">Nombre es valido!</div>
                     <div class="invalid-feedback">Campo nombre no es valido!</div>
                 </div>
                 <div class="col-md-12">
-                    <input id="documento" class="form-control" type="number" name="documento"
+                    <input oninput="validateInputnumber(event)" id="documento" class="form-control" type="number" name="documento"
                         placeholder="Documento del empleado" required>
                     <div class="valid-feedback">El Documento es valido!</div>
                     <div class="invalid-feedback">El campo Documento no
@@ -23,7 +23,7 @@
                         estar vacio!</div>
                 </div>
                 <div class="col-md-12">
-                    <input id="monto" class="form-control" type="number" name="Monto" placeholder="Valor de la vivienda"
+                    <input oninput="validateInputnumber(event)" id="monto" class="form-control" type="number" name="Monto" placeholder="Valor de la vivienda"
                         required>
                     <div class="valid-feedback">el valor de la vivienda es
                         valido!</div>
@@ -31,7 +31,7 @@
                         blanco!</div>
                 </div>
                 <div class="col-md-12">
-                    <input id="Ahorro10%" class="form-control" type="number" name="Ahorro_Minimo"
+                    <input oninput="validateInputnumber(event)" id="Ahorro10%" class="form-control" type="number" name="Ahorro_Minimo"
                         placeholder="Ahorro minimo 10% del valor de la vivienda" required readonly>
                     <div class="valid-feedback">el va es
                         valido!</div>
@@ -58,7 +58,7 @@
                
 
                 <div class="col-md-12">
-                    <input id="tasaInteresAnual" class="form-control" type="text" name="interes"
+                    <input oninput="validateInputnumber(event)" id="tasaInteresAnual" class="form-control" type="number" name="interes"
                         placeholder="Tasa de interés anual" required readonly>
                     <div class="valid-feedback">El correo es valido!</div>
                     <div class="invalid-feedback">El campo correo no puede estar vacío!</div>
@@ -67,6 +67,7 @@
             </div>
 
             <div class="col-md-12">
+<<<<<<< HEAD
     <input id="plazo" class="form-control" type="number" name="plazo" placeholder="Plazo en Años" required
            min="1" max="15" oninput="validarPlazo(this)">
     <div class="valid-feedback">El plazo es válido (de 1 a 15 años).</div>
@@ -90,8 +91,16 @@ function validarPlazo(input) {
 
 
             
+=======
+                <input oninput="validateInputnumber(event)" id="plazo" class="form-control" type="number" name="plazo" placeholder="Plazo en Años" required>
+                <div class="valid-feedback">el plazo es
+                    valido!</div>
+                <div class="invalid-feedback">el plazo no puede estar en
+                    blanco!</div>
+            </div>
+>>>>>>> d6755cf13184a140762a02e592c258be3812cf24
             <div class="col-md-12">
-                <input id="cuotas" class="form-control" type="number" name="cuotas" placeholder="Cuota mensual"
+                <input oninput="validateInputnumber(event)" id="cuotas" class="form-control" type="number" name="cuotas" placeholder="Cuota mensual"
                     required>
                 <div class="valid-feedback">la cuota es
                     valida!</div>
@@ -105,7 +114,11 @@ function validarPlazo(input) {
                 <option value="2">No</option>
             </select>
             <div class="col-md-12">
+<<<<<<< HEAD
                 <input id="numero de cuenta bancaria" class="form-control" type="number" name="cuenta bancaria"
+=======
+                <input oninput="validateInputnumber(event)" id="numero de cuenta bancaria" class="form-control" type="text" name="cuenta bancaria"
+>>>>>>> d6755cf13184a140762a02e592c258be3812cf24
                     placeholder="Numero de cuenta bancaria" required>
                 <div class="valid-feedback">El numero de cuenta es
                     valido!</div>

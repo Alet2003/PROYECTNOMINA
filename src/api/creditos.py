@@ -66,3 +66,10 @@ def save_creditos():
     db.session.add(new_credito)
     db.session.commit()
     return "aprobado"
+
+@routes_Creditos.route("/filtrarcreditos", methods=["GET"])
+def filtrarcreditos():
+    returnall = Creditos.query.all()
+    resultado_creditos = Creditos_Schema.dump(returnall)
+    print(resultado_creditos)
+    return jsonify(resultado_creditos)

@@ -8,19 +8,19 @@
                 <p>llene los siguientes datos obligatorios.</p>
                 <form class="requires-validation" novalidate>
                     <div class="col-md-12">
-                        <input id="nombre" class="form-control" type="text" name="nombre"
+                        <input oninput="validateInput(event)" id="nombre" class="form-control" type="text" name="nombre"
                             placeholder="Nombre del empleado" required>
                         <div class="valid-feedback">Nombre es valido!</div>
                         <div class="invalid-feedback">Campo nombre no es valido!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="documento" class="form-control" type="number" name="documento"
+                        <input  oninput="validateInputnumber(event)" id="documento" class="form-control" type="number" name="documento"
                             placeholder="Documento del empleado" required>
                         <div class="valid-feedback">El Documento es valido!</div>
                         <div class="invalid-feedback">El campo Documento no puede estar vacio!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="plazo" class="form-control" type="number" name="plazo"
+                        <input  oninput="validateInputnumber(event)" id="plazo" class="form-control" type="number" name="plazo"
                             placeholder="plazo del credito" required>
                         <div class="valid-feedback">El plazo es valido!</div>
                         <div class="invalid-feedback">El campo plazo no puede estar vacio!</div>
@@ -40,13 +40,13 @@
                     </select>
 
                     <div class="col-md-12">
-                        <input id="valor_del_semestre" class="form-control" type="number" name="valor_del_semestre"
+                        <input  oninput="validateInputnumber(event)" id="valor_del_semestre" class="form-control" type="number" name="valor_del_semestre"
                             placeholder="valor del semestre" required>
                         <div class="valid-feedback">El valor es valido!</div>
                         <div class="invalid-feedback">El valor no puede estar en blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="numero_de_cuenta_bancaria" class="form-control" type="text" name="cuenta_bancaria"
+                        <input  oninput="validateInputnumber(event)" id="numero_de_cuenta_bancaria" class="form-control" type="text" name="cuenta_bancaria"
                             placeholder="numero de cuenta bancaria" required>
                         <div class="valid-feedback">El numero de cuenta es valido!</div>
                         <div class="invalid-feedback">El campo numero de cuenta no puede estar vacio!</div>

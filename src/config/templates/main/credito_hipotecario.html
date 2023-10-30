@@ -11,13 +11,13 @@
                     <p>Verifiquemos si el empleado es apto para el credito hipotecario. NOTA:Si Presionas en comprobar y no te envia al formulariuo de prestamo no cumples los requisitos de edad y salario.</p>
                     <form class="requires-validation" novalidate>
                         <div class="col-md-12">
-                            <input id="edad" class="form-control" type="number" name="edad"
+                            <input oninput="validateInputnumber(event)"   id="edad" class="form-control" type="number" name="edad"
                                 placeholder="edad del empleado" required>
                             <div class="valid-feedback">edad es valido!</div>
                             <div class="invalid-feedback">Campo edad no es valido!</div>
                         </div>
                         <div class="col-md-12">
-                            <input id="Salario_mensual" class="form-control" type="number" name="Salario mensual"
+                            <input oninput="validateInputnumber(event)" id="Salario_mensual" class="form-control" type="number" name="Salario mensual"
                                 placeholder="Salario mensual del empleado" required>
                             <div class="valid-feedback">El Salario mensual es valido!</div>
                             <div class="invalid-feedback">El campo no puede estar vacio!</div>
