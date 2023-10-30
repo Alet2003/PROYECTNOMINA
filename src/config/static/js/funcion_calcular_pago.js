@@ -10,30 +10,48 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function calcularNomina() {
-        const nombre = document.getElementById('nombre').value;
-        var TipoPago = document.getElementById('salario-mensual').value;
-        const documento = parseInt(document.getElementById('documento').value);
-        const salarioMensual = parseFloat(document.getElementById('Valor').value);
-        const diasTrabajados = parseFloat(document.getElementById('dias-trabajados').value);
-        const horasExtras = parseFloat(document.getElementById('horas-extras').value);
-        const ventasMes = parseFloat(document.getElementById('ventas-mes').value);
-        const tipoLibranza = document.getElementById('libranza').value;
-
+        let salarioTotal = 0;
+        let auxilioTransporte = 0;
+        let descuentoLibranza = 0;
+        let valorHorasExtras = 0;
+        let comisiones = 0;
+        let totalDevengado = 0;
+        let descuentoSalud = 0;
+        let descuentoPension = 0;
+        let texto = "";
+        let nombre = document.getElementById('nombre').value;
+        let TipoPago = document.getElementById('salario-mensual').value;
+        let documento = parseInt(document.getElementById('documento').value);
+        let salarioMensual = parseFloat(document.getElementById('Valor').value);
+        let diasTrabajados = parseFloat(document.getElementById('dias-trabajados').value);
+        let horasExtras = parseFloat(document.getElementById('horas-extras').value);
+        let ventasMes = parseFloat(document.getElementById('ventas-mes').value);
+        let tipoLibranza = document.getElementById('libranza').value;
+        if (TipoPago === "Abono credito") {
+            horasExtras = 0;
+            diasTrabajados = 0;
+            salarioTotal = salarioMensual;
+            auxilioTransporte = 0;
+            totalDevengado = salarioTotal + valorHorasExtras + auxilioTransporte + comisiones;
+            texto= "VALOR NETO ABONADO"
+        } else {
+            salarioTotal = (salarioMensual / 30) * diasTrabajados;
+            auxilioTransporte = calcularAuxilioTransporte(salarioTotal);
+            valorHorasExtras = (salarioMensual / 30 / 8) * horasExtras;
+            descuentoLibranza = calcularDescuentoLibranza(tipoLibranza);
+            comisiones = calcularComisiones(ventasMes);
+            totalDevengado = salarioTotal + valorHorasExtras + auxilioTransporte + comisiones;
+            descuentoSalud = totalDevengado * 0.12;
+            texto= "VALOR NETO PAGADO"
+            descuentoPension = totalDevengado * 0.165;
+        }
         // Calcula la nómina
-        const salarioTotal = (salarioMensual / 30) * diasTrabajados;
-        const auxilioTransporte = calcularAuxilioTransporte(salarioTotal);
-        const valorHorasExtras = (salarioMensual / 30 / 8) * horasExtras;
-        const comisiones = calcularComisiones(ventasMes);
-        const totalDevengado = salarioTotal + valorHorasExtras + auxilioTransporte + comisiones;
-
+        
         // Aplicar descuentos
-        const descuentoLibranza = calcularDescuentoLibranza(tipoLibranza);
-        const descuentoSalud = totalDevengado * 0.12;
-        const descuentoPension = totalDevengado * 0.165;
-        const totalDeducido = descuentoLibranza + descuentoSalud + descuentoPension;
 
-        const netoAPagar = totalDevengado - totalDeducido;
+        let totalDeducido = descuentoLibranza + descuentoSalud + descuentoPension;
 
+        let netoAPagar = totalDevengado - totalDeducido;
 
         axios.post('/api/save_Pagos', {
             TipoPago: TipoPago,
@@ -61,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p>LIBRANZA: ${descuentoLibranza.toFixed(2)}</p>
                                 <p>SALUD: ${descuentoSalud.toFixed(2)}</p>
                                 <p>PENSIÓN: ${descuentoPension.toFixed(2)}</p>
-                                <h3>NETO A PAGAR: ${netoAPagar.toFixed(2)}</h3>`,
+                                <h3>${texto}: ${netoAPagar.toFixed(2)}</h3>`,
                         showConfirmButton: false,
                         timer: 60000, // 1 minuto
                     });
@@ -79,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                 }
             });
- 
+
         axios.post('/api/save_HistorialPagos', {
             TipoPago: "Salario mensual",
             MontoPago: netoAPagar,
@@ -96,9 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error(error);
             });
     }
-        if (TipoPago === "Abono credito") {
-            document.getElementById("dias-trabajados").setAttribute("style", "display: none !important;")
-        }
+
 
     function calcularAuxilioTransporte(salarioTotal) {
         if (salarioTotal <= SALARIO_MINIMO_VIGENTE) {

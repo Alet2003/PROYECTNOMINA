@@ -38,6 +38,7 @@ function validarcreditoeducativo() {
 }
 
 function credito() {
+    
     var nombre = document.getElementById("nombre").value
     var MontoCredito = document.getElementById("monto").value;
     var TasaInteres = 0;
@@ -57,33 +58,60 @@ function credito() {
     const cuotasMensuales = cuotafin.toFixed(2)
     console.log(cci, creditoconinteres, cuotas, cuotafin, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado);
 
-    axios.post('/api/save_creditos', {
-        MontoCredito: MontoCredito,
-        TasaInteres: TasaInteres,
-        PlazoCredito: PlazoCredito,
-        CuotasMensuales: CuotasMensuales,
-        EstadoCredito: EstadoCredito,
-        IDEmpleado: IDEmpleado
-    }, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
+    axios.get('/api/filtrarcreditos', {
+        responseType: 'json'
     })
-        .then(function (respuesta) {
-            console.log(respuesta.data);
-            if (respuesta.data === "aprobado") {
-                Swal.fire({
-                    title: 'Felicidades credito aprobado',
-                    text: `el empleado ${nombre} ha obtenido un creito por el monto de ${MontoCredito}, las cuotas tienen un valor de ${cuotasMensuales}, el credito debe ser pagado en un plazo de ${PlazoCredito}`,
-                })
-
+        .then(function (response) {
+            let datos = response.data;
+            if (Array.isArray(datos)) {
+                datos.forEach(function (credito) {
+                   id = credito.IDEmpleado
+                   if (id === IDEmpleado) {
+                    axios.post('/api/save_creditos', {
+                        MontoCredito: MontoCredito,
+                        TasaInteres: TasaInteres,
+                        PlazoCredito: PlazoCredito,
+                        CuotasMensuales: CuotasMensuales,
+                        EstadoCredito: EstadoCredito,
+                        IDEmpleado: IDEmpleado
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(function (respuesta) {
+                            console.log(respuesta.data);
+                            if (respuesta.data === "aprobado") {
+                                Swal.fire({
+                                    title: 'Felicidades credito aprobado',
+                                    text: `el empleado ${nombre} ha obtenido un creito por el monto de ${MontoCredito}, las cuotas tienen un valor de ${cuotasMensuales}, el credito debe ser pagado en un plazo de ${PlazoCredito}`,
+                                })
+                
+                            } else {
+                
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error(error);
+                        });
+                   }
+                });
             } else {
-
+                console.log('Los datos recibidos no son un array válido. Datos recibidos:', datos);
             }
         })
         .catch(function (error) {
-            console.error(error);
+            if (error.response) {
+                console.log('Error de respuesta del servidor:', error.response.data);
+            } else if (error.request) {
+                console.log('Error de solicitud:', error.request);
+            } else {
+                console.log('Error:', error.message);
+            }
+            console.log('Error al obtener datos del servidor:', error.config);
         });
+
+    
 }
 
 
