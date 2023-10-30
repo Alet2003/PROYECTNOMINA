@@ -10,7 +10,7 @@
                 <p>llene los siguientes datos obligatorios.</p>
                 <form class="requires-validation" novalidate>
                     <div class="col-md-12">
-                        <input id="nombre"
+                        <input oninput="validateInputnumber(event)" id="nombre"
                             class="form-control"
                             type="text"
                             name="nombre"
@@ -20,7 +20,7 @@
                         <div class="invalid-feedback">Campo nombre no es valido!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="documento"
+                        <input oninput="validateInputnumber(event)" id="documento"
                             class="form-control"
                             type="number"
                             name="documento"
@@ -32,7 +32,7 @@
                             estar vacio!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="monto"
+                        <input oninput="validateInputnumber(event)" id="monto"
                             class="form-control"
                             type="number"
                             name="Monto"
@@ -44,7 +44,7 @@
                             blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="plazo"
+                        <input oninput="validateInputnumber(event)" id="plazo"
                             class="form-control"
                             type="number"
                             name="plazo"
@@ -56,7 +56,7 @@
                             blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input id="cuotas"
+                        <input oninput="validateInputnumber(event)" id="cuotas"
                             class="form-control"
                             type="number"
                             name="cuotas"
@@ -75,7 +75,7 @@
                         <option value="2">No</option>
                     </select>
                     <div class="col-md-12">
-                        <input id="numero de cuenta bancaria"
+                        <input oninput="validateInputnumber(event)" id="numero de cuenta bancaria"
                             class="form-control"
                             type="text"
                             name="cuenta bancaria"

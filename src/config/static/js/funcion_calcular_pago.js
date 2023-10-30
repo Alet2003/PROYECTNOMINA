@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function calcularNomina() {
         const nombre = document.getElementById('nombre').value;
+        var TipoPago = document.getElementById('salario-mensual').value;
         const documento = parseInt(document.getElementById('documento').value);
-        const salarioMensual = parseFloat(document.getElementById('salario-mensual').value);
+        const salarioMensual = parseFloat(document.getElementById('Valor').value);
         const diasTrabajados = parseFloat(document.getElementById('dias-trabajados').value);
         const horasExtras = parseFloat(document.getElementById('horas-extras').value);
         const ventasMes = parseFloat(document.getElementById('ventas-mes').value);
@@ -33,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const netoAPagar = totalDevengado - totalDeducido;
 
+
         axios.post('/api/save_Pagos', {
-            TipoPago: "Salario mensual",
+            TipoPago: TipoPago,
             MontoPago: netoAPagar,
             IDEmpleado: documento
         }, {
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         position: 'top-center',
                         icon: 'success',
                         html: `<h2>Resultados de la Nómina para ${nombre}</h2>
+                                <p>TIPO DE PAGO: ${TipoPago}</p>
                                 <p>SALARIO TOTAL: ${salarioTotal.toFixed(2)}</p>
                                 <p>AUXILIO TRANSPORTE: ${auxilioTransporte.toFixed(2)}</p>
                                 <p>VALOR HORAS EXTRAS: ${valorHorasExtras.toFixed(2)}</p>
@@ -93,7 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error(error);
             });
     }
-
+        if (TipoPago === "Abono credito") {
+            document.getElementById("dias-trabajados").setAttribute("style", "display: none !important;")
+        }
 
     function calcularAuxilioTransporte(salarioTotal) {
         if (salarioTotal <= SALARIO_MINIMO_VIGENTE) {
