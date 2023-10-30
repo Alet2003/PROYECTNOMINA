@@ -11,8 +11,11 @@ from flask import (
     render_template,
 )
 from sqlalchemy import func, extract, distinct
+from datetime import datetime
+
 from Model.historial_pagos import HistorialPagos, HistorialPagosSchema
 routes_historialpagos = Blueprint("routes_historialpagos", __name__)
+now = datetime.now()
 
 # usuario
 HistorialPago_Schema = HistorialPagosSchema()
@@ -51,11 +54,12 @@ def actualizarHistorialPagos():
 
 @routes_historialpagos.route("/save_HistorialPagos", methods=["POST"])
 def save_Descuentos():
-    HistorialPagos = request.json[
-        "IDRegistro, FechaPago, TipoPago, MontoPago, IDEmpleado"
-    ]
-    print(HistorialPagos)
-    new_HistorialPagos = HistorialPagos(HistorialPagos)
+    FechaPago = now
+    TipoPago = request.json['TipoPago']
+    MontoPago = request.json['MontoPago']
+    IDEmpleado = request.json['IDEmpleado']
+    new_HistorialPagos = HistorialPagos(FechaPago, TipoPago, MontoPago, IDEmpleado)
+    print(new_HistorialPagos)
     db.session.add(new_HistorialPagos)
     db.session.commit()
-    return redirect("/HistorialPagos")
+    return ""

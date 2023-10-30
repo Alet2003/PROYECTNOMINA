@@ -1,5 +1,6 @@
 from common.Toke import *
 from config.db import db, app, ma
+from datetime import datetime
 from flask import (
     Flask,
     Blueprint,
@@ -13,13 +14,14 @@ from flask import (
 from sqlalchemy import func, extract
 from Model.pagos import Pagos, PagosSchema
 routes_Pagos = Blueprint("routes_Pagos", __name__)
+now = datetime.now()
 
 # usuario
 Pago_Schema = PagosSchema()
 Pagos_Schema = PagosSchema(many=True)
 
 @routes_Pagos.route("/Pagos", methods=["GET"])
-def Pagos():
+def pagos():
     returnall = Pagos.query.all()
     resultado_Pagos = Pagos_Schema.dump(returnall)
     return jsonify(resultado_Pagos)
@@ -33,28 +35,27 @@ def eliminar_Pagos(IDPago):
 
 @routes_Pagos.route("/actualizarPagos", methods=["POST"])
 def actualizarPagos():
-    IDRegistroHorasExtras = request.json["IDRegistroHorasExtras"]
-    FechaRegistro = request.json["FechaRegistro"]
-    HoraInicioHorasExtras = request.json["HoraInicioHorasExtras"]
-    HoraFinHorasExtras = request.json["HoraFinHorasExtras"]
-    TotalHorasExtras = request.json["TotalHorasExtras"]
+    IDPago = request.json["IDPago"]
+    FechaPago = request.json["FechaPago"]
+    TipoPago = request.json["TipoPago"]
+    MontoPago = request.json["MontoPago"]
     IDEmpleado = request.json["IDEmpleado"]
-    HorasExtras = HorasExtras.query.get(IDRegistroHorasExtras)
-    HorasExtras.FechaRegistro = FechaRegistro
-    HorasExtras.HoraInicioHorasExtras = HoraInicioHorasExtras
-    HorasExtras.HoraFinHorasExtras = HoraFinHorasExtras
-    HorasExtras.TotalHorasExtras = TotalHorasExtras
-    HorasExtras.IDEmpleado = IDEmpleado
+    Pagos = Pagos.query.get(IDPago)
+    Pagos.FechaPago = FechaPago
+    Pagos.TipoPago = TipoPago
+    Pagos.MontoPago = MontoPago
+    Pagos.IDEmpleado = IDEmpleado
     db.session.commit()
     return redirect("/Pagos")
 
 @routes_Pagos.route("/save_Pagos", methods=["POST"])
 def save_Pagos():
-    Pagos = request.json[
-        "IDRegistroHorasExtras,  FechaRegistro, HoraInicioHorasExtras, HoraFinHorasExtras, TotalHorasExtras,IDEmpleado"
-    ]
-    print(Pagos)
-    new_HistorialPagos = Pagos(Pagos)
+    FechaPago = now
+    TipoPago = request.json['TipoPago']
+    MontoPago = request.json['MontoPago']
+    IDEmpleado = request.json['IDEmpleado']
+    new_HistorialPagos = Pagos(FechaPago, TipoPago, MontoPago, IDEmpleado)
+    print(new_HistorialPagos)
     db.session.add(new_HistorialPagos)
     db.session.commit()
-    return redirect("/Pagos")
+    return ""
