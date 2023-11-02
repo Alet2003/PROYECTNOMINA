@@ -6,7 +6,20 @@ window.onload = viewhistorial;
 
 function viewhistorial() {
     let table = jQuery('#tabla-historial').DataTable();
-
+    jQuery('#tabla-historial').on('click', '.edit-button', function() {
+        // Obtener el ID del registro desde el atributo data-id
+        var idRegistro = jQuery(this).data('id');
+        // Implementa la lógica de edición aquí
+        // Puedes abrir un modal o redirigir a una página de edición
+    });
+    
+    jQuery('#tabla-historial').on('click', '.delete-button', function() {
+        // Obtener el ID del registro desde el atributo data-id
+        var idRegistro = jQuery(this).data('id');
+        // Implementa la lógica de eliminación aquí
+        // Puedes abrir un modal de confirmación o realizar una solicitud para eliminar el registro
+    });
+    
     axios.get('/api/HistorialPagos', {
         responseType: 'json'
     })
@@ -16,12 +29,17 @@ function viewhistorial() {
 
             if (Array.isArray(datos)) {
                 datos.forEach(function (historial) {
+                    // Agrega botones de edición y eliminación a la última columna
+                    let editButton = '<button class="edit-button" data-id="' + historial.IDRegistro + '">Editar</button>';
+                    let deleteButton = '<button class="delete-button" data-id="' + historial.IDRegistro + '">Eliminar</button>';
+
                     table.row.add([
                         historial.IDRegistro,
                         historial.FechaPago,
                         historial.TipoPago,
                         historial.MontoPago,
                         historial.IDEmpleado,
+                        editButton + ' ' + deleteButton, // Agrega los botones aquí
                     ]).draw();
                 });
             } else {
@@ -29,13 +47,6 @@ function viewhistorial() {
             }
         })
         .catch(function (error) {
-            if (error.response) {
-                console.log('Error de respuesta del servidor:', error.response.data);
-            } else if (error.request) {
-                console.log('Error de solicitud:', error.request);
-            } else {
-                console.log('Error:', error.message);
-            }
-            console.log('Error al obtener datos del servidor:', error.config);
+            // Manejo de errores
         });
 }
