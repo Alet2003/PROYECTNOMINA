@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint,redirect,request,jsonify,json,session,render_template
+from flask import Flask, Blueprint, redirect, request, jsonify, json, session, render_template
 from common.Toke import *
 from config.db import db, app, ma
 from sqlalchemy import func, extract
@@ -12,6 +12,7 @@ routes_Creditos = Blueprint("routes_Creditos", __name__)
 # usuario
 CreditoSchema = CreditosSchema()
 Creditos_Schema = CreditosSchema(many=True)
+
 
 @routes_Creditos.route("/Creditos", methods=["GET"])
 def creditos():
@@ -61,15 +62,21 @@ def save_creditos():
     CuotasMensuales = request.json["CuotasMensuales"]
     EstadoCredito = request.json["EstadoCredito"]
     IDEmpleado = request.json["IDEmpleado"]
-    new_credito = Creditos(FechaOtorgamiento, MontoCredito, TasaInteres, PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado)
+    new_credito = Creditos(FechaOtorgamiento, MontoCredito, TasaInteres,
+                           PlazoCredito, CuotasMensuales, EstadoCredito, IDEmpleado)
     print(new_credito)
     db.session.add(new_credito)
     db.session.commit()
     return "aprobado"
 
-@routes_Creditos.route("/filtrarcreditos", methods=["GET"])
+
+@routes_Creditos.route("/filtrarcreditos", methods=["POST"])
 def filtrarcreditos():
-    returnall = Creditos.query.all()
-    resultado_creditos = Creditos_Schema.dump(returnall)
-    print(resultado_creditos)
-    return jsonify(resultado_creditos)
+    idempleado = request.json.get("IDEmpleado")
+    if idempleado is None:
+        return "No se proporcionó un ID de empleado"
+    resultado = Creditos.query.filter_by(IDEmpleado=idempleado).all()
+    if resultado:
+        return "exist"
+    else:
+        return "No se encontraron créditos para este ID de empleado"

@@ -10,7 +10,7 @@
                 <p>llene los siguientes datos obligatorios.</p>
                 <form class="requires-validation" novalidate>
                     <div class="col-md-12">
-                        <input oninput="validateInputnumber(event)" id="nombre"
+                        <input oninput="validateInput(event)" id="nombre"
                             class="form-control"
                             type="text"
                             name="nombre"
@@ -20,7 +20,7 @@
                         <div class="invalid-feedback">Campo nombre no es valido!</div>
                     </div>
                     <div class="col-md-12">
-                        <input oninput="validateInputnumber(event)" id="documento"
+                        <input  max="10" oninput="validateInputnumber(event)" id="documento"
                             class="form-control"
                             type="number"
                             name="documento"
@@ -32,19 +32,19 @@
                             estar vacio!</div>
                     </div>
                     <div class="col-md-12">
-                        <input oninput="validateInputnumber(event)" id="monto"
+                        <input min="1000000" max="100000000" oninput="validateInputnumber(event)" id="monto"
                             class="form-control"
                             type="number"
                             name="Monto"
                             placeholder="Monto"
                             required>
-                        <div class="valid-feedback">el plazo es
+                        <div class="valid-feedback">el monto es
                             valido!</div>
-                        <div class="invalid-feedback">el plazo no puede estar en
+                        <div class="invalid-feedback">el monto no puede estar en
                             blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input oninput="validateInputnumber(event)" id="plazo"
+                        <input min="24" max="60" oninput="validateInputnumber(event)" id="plazo"
                             class="form-control"
                             type="number"
                             name="plazo"
@@ -56,7 +56,7 @@
                             blanco!</div>
                     </div>
                     <div class="col-md-12">
-                        <input oninput="validateInputnumber(event)" id="cuotas"
+                        <input max="5" oninput="validateInputnumber(event)" id="cuotas"
                             class="form-control"
                             type="number"
                             name="cuotas"
