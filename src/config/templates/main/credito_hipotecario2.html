@@ -55,7 +55,7 @@
                     <option value="2">No</option>
                 </select>
 
-
+               
 
                 <div class="col-md-12">
                     <input oninput="validateInputnumber(event)" id="tasaInteresAnual" class="form-control" type="number" name="interes"
@@ -67,12 +67,38 @@
             </div>
 
             <div class="col-md-12">
+<<<<<<< HEAD
+    <input id="plazo" class="form-control" type="number" name="plazo" placeholder="Plazo en Años" required
+           min="1" max="15" oninput="validarPlazo(this)">
+    <div class="valid-feedback">El plazo es válido (de 1 a 15 años).</div>
+    <div class="invalid-feedback">El plazo debe estar en el rango de 1 a 15 años.</div>
+</div>
+
+<script>
+function validarPlazo(input) {
+    const valor = parseInt(input.value, 10); // Convertir el valor a un número entero.
+    
+    if (isNaN(valor) || valor < 1) {
+        input.value = 1; // Si el valor es menor que 1 o no es un número, establecerlo en 1.
+    } else if (valor > 15) {
+        input.value = 15; // Si el valor es mayor que 15, establecerlo en 15.
+    }
+}
+</script>
+
+
+
+
+
+            
+=======
                 <input oninput="validateInputnumber(event)" id="plazo" class="form-control" type="number" name="plazo" placeholder="Plazo en Años" required>
                 <div class="valid-feedback">el plazo es
                     valido!</div>
                 <div class="invalid-feedback">el plazo no puede estar en
                     blanco!</div>
             </div>
+>>>>>>> d6755cf13184a140762a02e592c258be3812cf24
             <div class="col-md-12">
                 <input oninput="validateInputnumber(event)" id="cuotas" class="form-control" type="number" name="cuotas" placeholder="Cuota mensual"
                     required>
@@ -88,7 +114,11 @@
                 <option value="2">No</option>
             </select>
             <div class="col-md-12">
+<<<<<<< HEAD
+                <input id="numero de cuenta bancaria" class="form-control" type="number" name="cuenta bancaria"
+=======
                 <input oninput="validateInputnumber(event)" id="numero de cuenta bancaria" class="form-control" type="text" name="cuenta bancaria"
+>>>>>>> d6755cf13184a140762a02e592c258be3812cf24
                     placeholder="Numero de cuenta bancaria" required>
                 <div class="valid-feedback">El numero de cuenta es
                     valido!</div>
@@ -100,16 +130,27 @@
                     placeholder="Correo electronico" required>
                 <div class="valid-feedback">El correo es valido!</div>
                 <div class="invalid-feedback">El campo correo no puede
-                    estar vacio!</div>
+                    estar vacio!
+                </div>
+
+               
             </div>
+             <div class="col-md-12">
+                    <input id="credito" class="form-control" type="number" name="creditos"
+                     placeholder="Si la vivienda es de interes social se financiara el 90%, si no es del 70% sobre el valor de la vivienda" required readonly>
+                    <div class="valid-feedback">El credito es valido!</div>
+                    <div class="invalid-feedback">El campo credito es valido!</div>
+                </div>
             <div class="form-button mt-3">
                 <a onclick="Creditohipotecario()" zid="submit" type="submit" class="btn btn-primary form-button">SOLICITAR</a>
             </div>
+            
+
             </form>
         </div>
     </div>
 </div>
-
+              
 <script>
     //calcula 10% del valor de la vivienda//
 
@@ -177,9 +218,27 @@
             document.querySelector("input[name='cuotas']").value = cuotaMensual.toFixed(2);
         }
     }
+    
 
     // Agrega un evento de escucha a los campos relevantes para calcular la cuota al cambiar su valor
     document.querySelector("input[name='plazo']").addEventListener("input", calcularCuotaMensual);
     document.querySelector("input[name='interes']").addEventListener("input", calcularCuotaMensual);
+</script>
+
+<script>
+document.getElementById("interesSocialSelect").addEventListener("change", function() {
+    const monto = parseFloat(document.getElementById("monto").value);
+    const interesSocial = parseInt(this.value);
+
+    if (!isNaN(monto) && interesSocial === 1) {
+        const credito = monto * 0.9; // 90% de financiamiento si la vivienda es de interés social
+        document.getElementById("credito").value = credito;
+    } else if (!isNaN(monto) && interesSocial === 2) {
+        const credito = monto * 0.7; // 70% de financiamiento si la vivienda no es de interés social
+        document.getElementById("credito").value = credito;
+    } else {
+        document.getElementById("credito").value = ""; // Reiniciar el campo si los valores no son válidos
+    }
+});
 </script>
 {% endblock %}
