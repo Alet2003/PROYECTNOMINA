@@ -6,20 +6,54 @@ window.onload = viewhistorial;
 
 function viewhistorial() {
     let table = jQuery('#tabla-historial').DataTable();
-    jQuery('#tabla-historial').on('click', '.edit-button', function() {
+    jQuery('#tabla-historial').on('click', '.edit-button', function () {
         // Obtener el ID del registro desde el atributo data-id
-        var idRegistro = jQuery(this).data('id');
-        // Implementa la lógica de edición aquí
-        // Puedes abrir un modal o redirigir a una página de edición
+        var IDRegistro = jQuery(this).data('id');
     });
-    
-    jQuery('#tabla-historial').on('click', '.delete-button', function() {
+
+    jQuery('#tabla-historial').on('click', '.delete-button', function () {
         // Obtener el ID del registro desde el atributo data-id
-        var idRegistro = jQuery(this).data('id');
-        // Implementa la lógica de eliminación aquí
-        // Puedes abrir un modal de confirmación o realizar una solicitud para eliminar el registro
+        var IDRegistro = jQuery(this).data('id');
+        Swal.fire({
+            title: "Estas seguro de eliminar este registro?",
+            text: "Despues de eliminado no podra revertir este cambio!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, estoy seguro!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.get(`/api/eliminar_HistorialPagos/${IDRegistro}`, {
+                    IDRegistro: IDRegistro
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(function (respuesta) {
+                        console.log(respuesta.data);
+                        if (respuesta.data === "eliminado") {
+                            Swal.fire({
+                                title: "Eliminado!",
+                                text: "El registro fue eliminado correctamente.",
+                                icon: "success",
+                                confirmButtonColor: "#3085d6",
+                                confirmButtonText: "OK",
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                }});
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                    });
+
+            }
+        });
     });
-    
+
     axios.get('/api/HistorialPagos', {
         responseType: 'json'
     })
@@ -30,8 +64,8 @@ function viewhistorial() {
             if (Array.isArray(datos)) {
                 datos.forEach(function (historial) {
                     // Agrega botones de edición y eliminación a la última columna
-                    let editButton = '<button class="edit-button" data-id="' + historial.IDRegistro + '">Editar</button>';
-                    let deleteButton = '<button class="delete-button" data-id="' + historial.IDRegistro + '">Eliminar</button>';
+                    let editButton = '<a href="#modal1" id="edit" name="edit" class="edit-button" data-id="' + historial.IDRegistro + '">Editar</a>';
+                    let deleteButton = '<button id="delete" name="delete" class="delete-button" data-id="' + historial.IDRegistro + '">Eliminar</button>';
 
                     table.row.add([
                         historial.IDRegistro,

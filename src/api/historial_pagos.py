@@ -33,7 +33,7 @@ def eliminar_HistorialPagos(IDRegistro):
     IDRegistros = HistorialPagos.query.get(IDRegistro)
     db.session.delete(IDRegistros)
     db.session.commit()
-    return jsonify(HistorialPago_Schema.dump(IDRegistros))
+    return "eliminado"
 
 
 @routes_historialpagos.route("/actualizarHistorialPagos", methods=["POST"])
