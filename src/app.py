@@ -35,6 +35,10 @@ app.register_blueprint(routes_home, url_prefix="/fronted")
 def index():
     return render_template('/index.html')
 
+@app.route("/demo", methods=["GET"])
+def demo():
+    return render_template('/home.html')
+
 # @app.route("/algo")
 # def otr():
 #     return render_template('/main/homeodontologo.html',)
